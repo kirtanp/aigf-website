@@ -1,0 +1,31 @@
+---
+// "Get updates" block. Links to the newsletter form once one is set in Site settings,
+// otherwise to an email asking to be kept informed. No embedded form: no third-party
+// scripts or cookies on the site.
+import { getCurrent, getSite, updatesHref } from '../lib/data';
+
+interface Props {
+  title?: string;
+}
+const current = await getCurrent();
+const site = await getSite();
+const { title = 'Stay informed' } = Astro.props;
+const href = updatesHref(site, current.year);
+---
+
+<div class="flex flex-col gap-6 rounded-2xl bg-wash p-7 ring-1 ring-line sm:p-10 md:flex-row md:items-center md:justify-between">
+  <div class="max-w-xl">
+    <h2 class="text-xl font-semibold tracking-tight">{title}</h2>
+    <p class="mt-2 text-muted">
+      {
+        site.newsletterFormUrl
+          ? `Subscribe to hear when the ${current.year} speakers, programme and registration are announced.`
+          : `Email us and we will let you know when the ${current.year} speakers, programme and registration are announced.`
+      }
+    </p>
+  </div>
+  <a href={href} class="bg-brand-gradient-deep inline-flex h-12 shrink-0 items-center justify-center gap-2 self-start rounded-full px-6 font-semibold whitespace-nowrap text-white shadow-sm transition hover:opacity-90 md:self-auto">
+    {site.newsletterFormUrl ? 'Subscribe' : 'Ask for updates'}
+    <svg aria-hidden="true" viewBox="0 0 16 16" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+  </a>
+</div>

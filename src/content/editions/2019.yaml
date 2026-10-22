@@ -1,0 +1,200 @@
+year: 2019
+number: 1
+title: AI Governance Forum 2019
+theme: Building Human Trust in Artificial Intelligence
+date: '2019-03-23'
+timezone: CET
+format: in-person
+city: Geneva
+venue: Brocher Foundation, Hermance
+summary: >-
+  The first AI Governance Forum met at the Brocher Foundation near Geneva to discuss building human
+  trust in AI, from accountability and privacy to an international consensus on AI policy. It was
+  supported by the Swiss Federal Office of Communications (OFCOM).
+supportedBy:
+  - Federal Office of Communications OFCOM of the Swiss Confederation
+logo: ../../assets/logos/2019.png
+oldSiteUrl: https://2019.ai-gf.com/
+speakers:
+  - speaker: raja-chatila.md
+    roleAtTheTime: >-
+      Chair of the IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems and
+      Professor of Robotics and Ethics
+    organisationAtTheTime: Pierre and Marie Curie University
+    talkTitle: Value Aligned Design of AI Systems
+    sessionRole: Panelist
+  - speaker: karine-perset.md
+    roleAtTheTime: >-
+      Administrator on Digital Economy and Artificial Intelligence Policy in the OECD Directorate
+      for Science
+    organisationAtTheTime: Technology and Innovation
+    talkTitle: OECD Approach on AI Policy
+    sessionRole: Panelist
+  - speaker: thomas-wiegand.md
+    roleAtTheTime: >-
+      Chair of the IUT/WHO Focus Group on Healthcare in AI and Professor in the Department of
+      Electrical Engineering and Computer Science
+    organisationAtTheTime: the Technical University of Berlin
+    talkTitle: WHO/ITU Focus Group on AI and Healthcare
+    sessionRole: Panelist
+  - speaker: joanna-bryson.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: University of Bath
+    talkTitle: Artificial Intelligence and Accountability
+    sessionRole: Panelist
+  - speaker: martin-jaggi.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: EPFL
+    talkTitle: Understanding the Fundamentals of AI and ML
+  - speaker: carmela-troncoso.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: EPFL
+    talkTitle: Security and Privacy
+  - speaker: florimond-houssiau.md
+    roleAtTheTime: Researcher
+    organisationAtTheTime: Imperial College London
+    talkTitle: Solving AI’s Privacy Problem
+  - speaker: marko-groblenik.md
+    roleAtTheTime: OECD AIGO Sub-Group of Experts and AI Lab
+    organisationAtTheTime: Jozef Stefan Institute
+    talkTitle: Cross-lingual Real-Time Global Media Monitoring
+  - speaker: michele-loi.md
+    roleAtTheTime: Researcher
+    organisationAtTheTime: University of Zurich
+    sessionRole: Panelist
+  - speaker: sacha-alanoca.md
+    roleAtTheTime: AI Policy Researcher and Program Manager
+    organisationAtTheTime: The Future Society
+    talkTitle: Trustworthy AI and Social Choices
+    sessionRole: Panelist
+  - speaker: mael-pegny.md
+    roleAtTheTime: Lecturer
+    organisationAtTheTime: the Ecole Polytechnique and ENSTA Paris Tech
+  - speaker: el-mahdi-el-mhamdi.md
+    roleAtTheTime: Researcher
+    organisationAtTheTime: EPFL
+    talkTitle: >-
+      AI safety beyond the killer robot cliché: from poisoning public debates to social media
+      addiction
+    sessionRole: Panelist
+  - speaker: henry-lieberman.md
+    roleAtTheTime: Research Scientist
+    organisationAtTheTime: MIT
+    talkTitle: How AI can Enable a More Cooperative Future
+  - speaker: friedhelm-hummel.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: EPFL
+    talkTitle: AI and the Dilemma of Augmented Cognition
+    sessionRole: Panelist
+  - speaker: florian-evequoz.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: HES-SO
+    talkTitle: Direct Democracy, Digitalization, and AI
+  - speaker: juha-heikkila.md
+    roleAtTheTime: Head of Unit, Robotics, Directorate-General for Communication Networks, Content and Technology
+    organisationAtTheTime: European Commission
+    talkTitle: AI and Robotics
+    sessionRole: Panelist
+  - speaker: minyue-dong.md
+    roleAtTheTime: Professor at HEC and Director of China Economics and Financial Center
+    organisationAtTheTime: University of Lausanne
+    talkTitle: AI Policy in China
+    sessionRole: Panelist
+  - speaker: eva-thelisson.md
+    sessionRole: Panelist
+schedule:
+  - time: 09:00–09:10
+    title: Welcome
+    speakers:
+      - eva-thelisson.md
+  - time: 09:10–09:30
+    title: Understanding the Fundamentals of AI and ML
+    speakers:
+      - martin-jaggi.md
+  - time: 09:30–09:50
+    title: Artificial Intelligence and Accountability
+    speakers:
+      - joanna-bryson.md
+  - time: 09:50–11:00
+    title: AI Opportunities and Challenges for Society
+    speakers:
+      - henry-lieberman.md
+      - carmela-troncoso.md
+      - florimond-houssiau.md
+    description: |-
+      How AI can Enable a More Cooperative Future, Henry Lieberman (Research Scientist at MIT, USA)
+      Security and Privacy, Carmela Troncoso (Professor at EPFL, Switzerland)
+      Solving AI’s Privacy Problem, Florimond Houssiau (Researcher at Imperial College, London, UK)
+  - time: 11:00–11:20
+    title: Coffee Break
+  - time: 11:20–12:20
+    title: AI Opportunities and Challenges for Society
+    speakers:
+      - mael-pegny.md
+      - florian-evequoz.md
+      - el-mahdi-el-mhamdi.md
+    description: >-
+      AI Assisted Decision-Making and Transparency, Maël Pegny (Associated member, IHPST, Université
+      de Paris 1, France)
+
+      Direct Democracy, Digitalization, and AI, Florian Evéquoz (Professor at HES-SO, Switzerland)
+
+      AI safety beyond the killer robot cliché: from poisoning public debates to social media
+      addiction, El Mahdi El Mhamdi (Researcher at EPFL, Switzerland)
+  - time: 12:20–13:20
+    title: Lunch
+  - time: 13:20–14:00
+    title: Cross-lingual Real-Time Global Media Monitoring
+    speakers:
+      - marko-groblenik.md
+  - time: 14:00–14:20
+    title: Value Aligned Design of AI Systems
+    speakers:
+      - raja-chatila.md
+  - time: 14:20–15:40
+    title: 'Panel: Shaping an International Consensus on AI Policy (Moderators: Eva Thelisson)'
+    speakers:
+      - eva-thelisson.md
+      - juha-heikkila.md
+      - thomas-wiegand.md
+      - karine-perset.md
+      - joanna-bryson.md
+      - raja-chatila.md
+    description: >-
+      AI and Robotics, Juha Heikkilä (Head of Unit, Robotics, Directorate-General for Communication
+      Networks, Content and Technology, European Commission, Luxembourg)
+
+      WHO/ITU Focus Group on AI and Healthcare, Thomas Wiegand (Professor at Technical University of
+      Berlin, Germany)
+
+      OECD Approach on AI Policy, Karine Perset (OECD, Paris, France)
+
+      Trust and Legal Personality for Intelligent Artefacts, Joanna Bryson (Professor at University
+      of Bath, UK)
+
+      Recommendations of High Level Expert Group on AI from EU Commission (AIHLEG), Raja Chatila
+      (Professor at Pierre and Marie Curie University, Paris, France)
+  - time: 15:40–16:00
+    title: Coffee Break
+  - time: 16:00–17:15
+    title: 'Panel: Towards Responsible AI (Moderator: El Mahdi El Mhamdi)'
+    speakers:
+      - el-mahdi-el-mhamdi.md
+      - friedhelm-hummel.md
+      - sacha-alanoca.md
+      - michele-loi.md
+      - minyue-dong.md
+    description: >-
+      AI and the Dilemma of Augmented Cognition, Friedhelm Hummel (Professor at EPFL, Switzerland)
+
+      Trustworthy AI and Social Choices, Sacha Alanoca (AI Policy Researcher and Program Manager,
+      The Future Society, London, UK)
+
+      Fairness and Algorithms, Michele Loi (Postdoctoral researcher at the University of Zürich,
+      Switzerland)
+
+      AI Policy in China, Minyue Dong (Professor at the University of Lausanne, Switzerland)
+  - time: 17:15–17:30
+    title: Conclusion and Future Steps
+  - time: 17:30–18:30
+    title: Aperitif

@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/programme', label: 'Programme' },
+  { href: '/speakers', label: 'Speakers' },
+  { href: '/editions', label: 'Past editions' },
+];
+---
+
+<Base title="Page not found" noindex>
+  <PageHeader eyebrow="404" title="Page not found" lead="The page may have moved when the site was rebuilt. These are good places to start:">
+    <ul class="mt-10 flex flex-wrap gap-2">
+      {
+        links.map((l) => (
+          <li>
+            <a href={l.href} class="inline-flex h-10 items-center rounded-full border border-line px-5 text-sm font-medium transition hover:border-brand-blue hover:text-brand-blue">
+              {l.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </PageHeader>
+</Base>

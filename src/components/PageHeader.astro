@@ -1,0 +1,30 @@
+---
+// Top of every inner page: optional back link, eyebrow, display title, lead text.
+// Extra content (facts, buttons) goes in the default slot.
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  back?: { href: string; label: string };
+}
+const { eyebrow, title, lead, back } = Astro.props;
+---
+
+<header class="container-site fade-in pt-12 pb-14 sm:pt-20 sm:pb-20">
+  {
+    back && (
+      <p class="mb-10 text-sm font-medium">
+        <a href={back.href} class="group inline-flex items-center gap-1.5 text-muted transition hover:text-brand-blue">
+          <svg aria-hidden="true" viewBox="0 0 16 16" class="size-4 transition group-hover:-translate-x-0.5" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M13 8H3M7 4L3 8l4 4" /></svg>
+          {back.label}
+        </a>
+      </p>
+    )
+  }
+  <div class="max-w-4xl">
+    {eyebrow && <p class="eyebrow text-brand-blue">{eyebrow}</p>}
+    <h1 class:list={['text-display font-semibold text-balance break-words', eyebrow && 'mt-4']}>{title}</h1>
+    {lead && <p class="text-lead mt-6 max-w-prose-70 text-muted">{lead}</p>}
+  </div>
+  <slot />
+</header>

@@ -1,0 +1,29 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# WordPress snapshot (469 MB). Keep a copy on AITI's shared drive instead.
+archive-raw/
+
+# env and OS files
+.env
+.env.*
+.DS_Store
+
+# WordPress export (contains private drafts); the copy in archive-raw/ is what the migration reads
+*.WordPress.*.xml
+
+# screenshots from `just shots`
+screenshots/
+
+# logs, editor and tooling files
+*.log
+npm-debug.log*
+.vscode/
+.idea/
+test-results/
+playwright-report/
+.~lock.*#

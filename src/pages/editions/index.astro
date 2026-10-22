@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets';
+import { getEntries } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { getPastEditions, formatDate, placeLabel, ordinal, initials } from '../../lib/data';
+
+const editions = await Promise.all(
+  (await getPastEditions()).map(async (e) => ({
+    e,
+    people: (await getEntries(e.data.speakers.map((a) => a.speaker))).filter((p) => p && !p.data.draft).map((p) => p!),
+  })),
+);
+const first = editions.at(-1)?.e.data.year;
+// "in Geneva, online and in Lausanne", in the order the forum went there.
+const places = [...new Set(editions.slice().reverse().map(({ e }) => (e.data.format === 'online' || !e.data.city ? 'online' : `in ${e.data.city}`)))];
+const placeList = places.length > 1 ? `${places.slice(0, -1).join(', ')} and ${places.at(-1)}` : (places[0] ?? '');
+const lead = first ? `${editions.length} editions since ${first}, ${placeList}. Each has its programme, speakers and slides.` : undefined;
+const AVATARS = 6;
+---
+
+<Base title="Past editions" description={`Every edition of the AI Governance Forum since ${first}.`}>
+  <PageHeader eyebrow={first ? `Since ${first}` : undefined} title="Past editions" lead={lead} />
+
+  <section class="container-site pb-24 sm:pb-32">
+    <ol class="relative border-t border-line">
+      {
+        editions.map(({ e, people }) => (
+          <li class="border-b border-line" data-reveal>
+            <a href={`/editions/${e.data.year}`} class="group grid gap-x-12 gap-y-4 py-10 sm:py-14 lg:grid-cols-12">
+              <p class="text-[clamp(3rem,2rem+4vw,5.5rem)] leading-none font-semibold tracking-[-0.04em] tabular-nums transition group-hover:text-brand-blue lg:col-span-3">{e.data.year}</p>
+              <div class="lg:col-span-9">
+                <p class="text-sm text-muted">
+                  {ordinal(e.data.number)} edition<span class="mx-2" aria-hidden="true">·</span>{formatDate(e.data.date, e.data.endDate)}<span class="mx-2" aria-hidden="true">·</span>{placeLabel(e.data)}
+                </p>
+                <h2 class="mt-3 text-2xl leading-tight font-semibold tracking-tight text-balance sm:text-3xl">{e.data.theme ?? e.data.title}</h2>
+                {e.data.subtitle && <p class="mt-2 text-lg text-muted">{e.data.subtitle}</p>}
+                {e.data.summary && <p class="mt-4 max-w-prose-70 leading-relaxed text-ink/80">{e.data.summary}</p>}
+                <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
+                  {people.length > 0 ? (
+                    <div class="flex items-center gap-3">
+                      <span class="flex -space-x-2" aria-hidden="true">
+                        {people.slice(0, AVATARS).map((p) => (
+                          <span class="size-9 overflow-hidden rounded-full bg-wash ring-2 ring-paper">
+                            {p.data.photo ? (
+                              <Image src={p.data.photo} alt="" width={72} height={72} class="h-full w-full object-cover object-[50%_25%] grayscale" />
+                            ) : (
+                              <span class="text-brand-gradient flex h-full w-full items-center justify-center text-[0.65rem] font-semibold">{initials(p.data.name)}</span>
+                            )}
+                          </span>
+                        ))}
+                      </span>
+                      <span class="text-sm text-muted">{people.length} speakers</span>
+                    </div>
+                  ) : (
+                    <span />
+                  )}
+                  <span class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+                    View edition
+                    <svg aria-hidden="true" viewBox="0 0 16 16" class="size-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+</Base>

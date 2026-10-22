@@ -1,0 +1,156 @@
+year: 2024
+number: 6
+title: AI Governance Forum 2024
+theme: EU AI Act and Comparative AI Law
+subtitle: AI Regulation, Harmonized Standards, and Code of Practice for General Purpose AI (GPAI)
+date: '2024-10-30'
+startTime: '13:00'
+endTime: '18:00'
+timezone: CET
+format: hybrid
+city: Lausanne
+venue: Swiss Institute of Comparative Law, University of Lausanne
+summary: >-
+  The sixth edition, at the Swiss Institute of Comparative Law in Lausanne and online, compared AI
+  law in the EU, China, the United States and Japan, and looked at harmonized standards and the code
+  of practice for general-purpose AI. It was supported by Stiftung Mercator Schweiz.
+supportedBy:
+  - Stiftung Mercator Schweiz
+logo: ../../assets/logos/2024.png
+oldSiteUrl: https://2024.ai-gf.com/
+speakers:
+  - speaker: katharina-koerner.md
+    roleAtTheTime: AI Governance Lead
+    organisationAtTheTime: WGU
+    talkTitle: Californian Law on GPAI
+    sessionRole: Panelist
+  - speaker: kim-skov-hilding.md
+    roleAtTheTime: Head of Danish Standardization Committee on AI, Secretary
+    organisationAtTheTime: CEN-CENELEC JTC 21 on AI
+    sessionRole: Moderator
+  - speaker: barbara-li.md
+    roleAtTheTime: Partner
+    organisationAtTheTime: >-
+      Reed Smith Beijing, IAPP Women Leading Privacy Advisory Board Member, Vice Chair of
+      Cybersecurity Working Group of EU Chamber of Commerce in China
+    talkTitle: Chinese AI Law
+  - speaker: paul-olivier-dehaye.md
+    roleAtTheTime: CEO hestia.ai
+    organisationAtTheTime: Founder personaldata.io
+    sessionRole: Moderator
+  - speaker: ryan-carrier.md
+    roleAtTheTime: Founder ForHumanity
+    talkTitle: U.S. Perspective on Risk Assessment and Certification
+    sessionRole: Panelist
+  - speaker: emilia-tantar.md
+    roleAtTheTime: Chief Data and AI Officer
+    organisationAtTheTime: Black Swan LUX
+    talkTitle: European AI Standardization
+    sessionRole: Panelist
+  - speaker: peter-j-schildkraut.md
+    roleAtTheTime: Senior Counsel and Co-Lead of Technology, Media, and Telecommunications Team
+    organisationAtTheTime: Arnold & Porter
+    talkTitle: US AI Law
+  - speaker: florent-thouvenin.md
+    roleAtTheTime: Professor of Information and Communications Law
+    organisationAtTheTime: University of Zurich
+    talkTitle: A Legal Framework for AI in Switzerland
+    sessionRole: Keynote
+  - speaker: kyoko-yoshinaga.md
+    roleAtTheTime: >-
+      Project Associate Professor of the Graduate School of Media and Governance, Keio University
+      andNon-Resident Fellow
+    organisationAtTheTime: Georgetown Law’s Institute for Technology Law & Policy
+    talkTitle: Japan’s Approach to AI Governance
+  - speaker: maria-axente.md
+    roleAtTheTime: Head of AI Public Policy and Ethics
+    organisationAtTheTime: PwC United Kingdom
+    talkTitle: AI Act on UK Companies
+    sessionRole: Panelist
+  - speaker: martin-jaggi.md
+    roleAtTheTime: Associate Professor
+    organisationAtTheTime: EPFL
+    talkTitle: Recommendations for EC GPAI Code of Practice
+    sessionRole: Panelist
+  - speaker: brando-benifei.md
+    roleAtTheTime: MEP European Parliament
+    organisationAtTheTime: Group of the Progressive Alliance of Socialists and Democrats in the European Parliament
+    talkTitle: EU AI Act
+  - speaker: florian-tramer.md
+    roleAtTheTime: Assistant Professor
+    organisationAtTheTime: ETHZ
+    talkTitle: Swiss Initiative on Red Teaming and GPAI Evaluation Method
+    sessionRole: Panelist
+  - speaker: jamie-berryhill.md
+    roleAtTheTime: AI Analyst & Project Lead
+    organisationAtTheTime: OECD.AI Policy Observatory
+    talkTitle: OECD Initiative on GPAI Evaluation
+    sessionRole: Panelist
+  - speaker: zoltan-turbek.md
+    roleAtTheTime: Deputy Permanent Representative of Hungary to the UN
+    talkTitle: The UN’s New Global Digital Compact and its Implications for Geneva
+    sessionRole: Keynote
+  - speaker: lama-saouma.md
+    roleAtTheTime: The International Center of Expertise in Montreal on Artificial Intelligence
+    talkTitle: Canadian Approach on GPAI Safety Rules
+    sessionRole: Panelist
+schedule:
+  - time: 13:00–13:20
+    title: Welcome Coffee
+  - time: 13:20–13:30
+    title: Welcome to AI Governance Forum
+    description: AI Transparency Institute
+  - time: 13:30–14:45
+    title: Session on Comparative AI Law
+    speakers:
+      - barbara-li.md
+      - peter-j-schildkraut.md
+      - kyoko-yoshinaga.md
+      - brando-benifei.md
+    description: >-
+      Chair: AI Transparency Institute
+
+      Speakers: Brando Benifei (EU AI Act), Barbara Li (Chinese AI Law), Peter J. Schildkraut (US AI
+      Law), Kyoko Yoshinaga (Japan’s Approach to AI Governance)
+  - time: 14:45–15:15
+    title: Keynote I
+    speakers:
+      - florent-thouvenin.md
+    description: “A Legal Framework for AI in Switzerland”
+  - time: 15:15–15:30
+    title: Coffee Break
+  - time: 15:30–16:30
+    title: >-
+      Workshop on Technical Standards (CEN-CENELEC Harmonized Standard): Risk Assessment and
+      Presumption of Conformity
+    speakers:
+      - kim-skov-hilding.md
+      - ryan-carrier.md
+      - emilia-tantar.md
+      - maria-axente.md
+    description: >-
+      Panelists: Emilia Tantar (European AI Standardization), Ryan Carrier (U.S. Perspective on Risk
+      Assessment and Certification), Maria Axente (AI Act on UK Companies)
+  - time: 16:30–17:15
+    title: Panel on Frontier AI, Safety Guardrails, and Red Teaming
+    speakers:
+      - paul-olivier-dehaye.md
+      - katharina-koerner.md
+      - martin-jaggi.md
+      - florian-tramer.md
+      - jamie-berryhill.md
+      - lama-saouma.md
+    description: >-
+      Panelists: Katharina Koerner (Californian Law on GPAI), Lama Saouma (Canadian Approach on GPAI
+      Safety Rules), Florian Tramèr (Swiss Initiative on Red Teaming and GPAI Evaluation Method),
+      Martin Jaggi (Recommendations for EC GPAI Code of Practice), Jamie Berryhill (OECD Initiative
+      on GPAI Evaluation)
+  - time: 17:15–17:25
+    title: Coffee Break
+  - time: 17:25–17:55
+    title: Keynote II
+    speakers:
+      - zoltan-turbek.md
+    description: “The UN’s New Global Digital Compact and its Implications for Geneva”
+  - time: 17:55–18:00
+    title: Wrap-Up Followed By Apéro

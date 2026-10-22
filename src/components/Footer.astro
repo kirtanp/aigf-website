@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import { getSite } from '../lib/data';
+import wordmark from '../assets/logos/2026-wordmark.png';
+
+const site = await getSite();
+const year = new Date().getFullYear();
+const nav = [
+  { href: '/programme', label: 'Programme' },
+  { href: '/speakers', label: 'Speakers' },
+  { href: '/editions', label: 'Past editions' },
+];
+const about = [
+  { href: '/about', label: 'About' },
+  { href: '/guiding-principles', label: 'Guiding principles' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<footer class="mt-auto border-t border-line bg-wash">
+  <div class="container-site grid gap-10 py-14 text-sm sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr]">
+    <div class="max-w-xs">
+      <Image src={wordmark} alt="AI GF’26" height={40} class="h-5 w-auto" />
+      <p class="mt-4 leading-relaxed text-muted">
+        Organised by <a href={site.organiserUrl} class="font-medium text-ink underline decoration-line underline-offset-4 hover:text-brand-blue hover:decoration-current">{site.organiserName}</a>, a non-profit based in Switzerland.
+      </p>
+    </div>
+    <nav aria-label="Forum">
+      <p class="eyebrow text-muted">Forum</p>
+      <ul class="mt-4 space-y-2.5">{nav.map((l) => <li><a href={l.href} class="hover:text-brand-blue">{l.label}</a></li>)}</ul>
+    </nav>
+    <nav aria-label="About">
+      <p class="eyebrow text-muted">About</p>
+      <ul class="mt-4 space-y-2.5">{about.map((l) => <li><a href={l.href} class="hover:text-brand-blue">{l.label}</a></li>)}</ul>
+    </nav>
+    <div>
+      <p class="eyebrow text-muted">Contact</p>
+      <p class="mt-4"><a href={`mailto:${site.contactEmail}`} class="break-all hover:text-brand-blue">{site.contactEmail}</a></p>
+      {
+        site.social.length > 0 && (
+          <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-2">
+            {site.social.map((s) => <li><a href={s.url} class="hover:text-brand-blue">{s.label}</a></li>)}
+          </ul>
+        )
+      }
+    </div>
+  </div>
+  <div class="container-site">
+    <p class="border-t border-line py-6 text-xs text-muted">© {year} {site.organiserName}</p>
+  </div>
+</footer>

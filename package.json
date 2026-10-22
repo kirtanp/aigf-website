@@ -1,0 +1,36 @@
+{
+  "name": "aigf-website",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "migrate": "node scripts/migrate/migrate.mjs",
+    "shots": "node scripts/screenshots.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^5.18.2",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "cheerio": "^1.2.0",
+    "js-yaml": "^5.5.0",
+    "playwright": "^1.64.1",
+    "turndown": "^7.2.4"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.27.7": true,
+    "sharp@0.34.5": true
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

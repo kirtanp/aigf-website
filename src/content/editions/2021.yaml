@@ -1,0 +1,66 @@
+year: 2021
+number: 3
+title: AI Governance Forum 2021
+theme: Standardization and Certification of AI
+date: '2021-12-08'
+startTime: '13:00'
+endTime: '15:00'
+timezone: CET
+format: online
+summary: >-
+  A half-day online edition on the standardization and certification of AI, with perspectives from
+  the United States, Singapore, UNESCO and international standards bodies.
+logo: ../../assets/logos/2021.png
+oldSiteUrl: https://2021.ai-gf.com/
+speakers:
+  - speaker: elham-tabassi.md
+    talkTitle: Trustworthy AI Programme and the Development of AI Risk Management Framework
+  - speaker: yeong-zee-kin.md
+    roleAtTheTime: >-
+      Assistant Chief Executive (Data Innovation and Protection Group) Infocomm Media Development
+      Authority of Singapore and Deputy Commissioner
+    organisationAtTheTime: Personal Data Protection Commission
+    talkTitle: Singapore’s approach to Trustworthy AI
+  - speaker: gary-marchant.md
+    roleAtTheTime: >-
+      Regents Professor of Law, Director of Center for Law, Science and Innovation and Chair of IEEE
+      P2863 Organizational Governance of AI Working Group (School for the Future of Innovation in
+      Society) Arizona State University
+    organisationAtTheTime: USA
+    talkTitle: 'Certification Landscape: Perspective from the USA'
+  - speaker: wendy-gonzalez.md
+    roleAtTheTime: Chief Executive Officer
+    organisationAtTheTime: (SAMA)
+  - speaker: sebastian-hallensleben.md
+    roleAtTheTime: Head of Digitalisation and AI (VDE Association for Electrical
+    organisationAtTheTime: Electronic & Information Technologies) OECD AI Policy Observatory
+    talkTitle: Standardization Structure for AI and the International IEC Special Expert Group on AI Ethics
+  - speaker: doaa-abu-elyounes.md
+    talkTitle: UNESCO’s Recommendation on the Ethics of AI
+schedule:
+  - time: 13:00–13:10
+    title: Welcome
+    description: Kshitij Sharma
+  - time: 13:10–13:30
+    title: 'Certification Landscape: Perspective from the USA'
+    speakers:
+      - gary-marchant.md
+  - time: 13:30–13:50
+    title: Singapore’s approach to Trustworthy AI
+    speakers:
+      - yeong-zee-kin.md
+  - time: 13:50–14:10
+    title: UNESCO’s Recommendation on the Ethics of AI
+    speakers:
+      - doaa-abu-elyounes.md
+  - time: 14:10–14:30
+    title: Trustworthy AI Programme and the Development of AI Risk Management Framework
+    speakers:
+      - elham-tabassi.md
+  - time: 14:30–14:50
+    title: Standardization Structure for AI and the International IEC Special Expert Group on AI Ethics
+    speakers:
+      - sebastian-hallensleben.md
+  - time: 14:50–15:00
+    title: Panel Discussion
+    description: Kshitij Sharma

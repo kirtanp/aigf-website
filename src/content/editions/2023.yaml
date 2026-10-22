@@ -1,0 +1,81 @@
+year: 2023
+number: 5
+title: AI Governance Forum 2023
+theme: Regulating emerging AI technologies and applications across borders
+date: '2023-12-01'
+startTime: '09:00'
+endTime: '16:00'
+timezone: CET
+format: online
+summary: >-
+  This year, the forum is focused on regulating emerging technologies like AI across borders.
+  Regulation and governance are crucial aspects of a holistic approach towards responsible and
+  trustworthy AI. The regulation process generally moves slower than the pace at which new
+  technological advancements occur. So, we must try to look ahead and anticipate rather than play
+  catch-up. Towards this goal, we hope to foster a discussion on recent as well as emerging
+  technologies and try to answer how we could govern them in the future and the present to ensure
+  that they remain beneficial to everyone instead of a select few while minimizing their adverse
+  impact on the climate.
+logo: ../../assets/logos/2023.png
+oldSiteUrl: https://2023.ai-gf.com/
+speakers:
+  - speaker: sayash-kapoor.md
+    sessionRole: Keynote
+  - speaker: kai-zenner.md
+    sessionRole: Keynote
+  - speaker: marion-ho-dac.md
+    talkTitle: The geopolitics of the EU AI regulation
+  - speaker: anna-nadibaidze.md
+    talkTitle: 'Regulating Military AI: Mission Impossible?'
+  - speaker: mrinalini-kochupillai.md
+    talkTitle: 'AI for Earth Observation: Emerging Ethical Issues and Opportunities'
+  - speaker: anupam-guha.md
+    talkTitle: The False Binary of Normative-Instrumental Approaches to AI Regulation
+  - speaker: emile-torres.md
+    talkTitle: Regulating AI and the TESCREAL Bundle of Ideologies
+  - speaker: eva-thelisson.md
+    talkTitle: A Comparative Law Approach on AI Governance
+schedule:
+  - time: 09:00–09:15
+    title: Welcome
+    description: AI Transparency Institute
+  - time: 09:15–09:45
+    title: 'AI for Earth Observation: Emerging Ethical Issues and Opportunities'
+    speakers:
+      - mrinalini-kochupillai.md
+  - time: 09:45–10:15
+    title: A Comparative Law Approach on AI Governance
+    speakers:
+      - eva-thelisson.md
+  - time: 10:15–10:45
+    title: The geopolitics of the EU AI regulation
+    speakers:
+      - marion-ho-dac.md
+  - time: 10:45–11:00
+    title: Coffee break
+  - time: 11:00–11:30
+    title: The False Binary of Normative-Instrumental Approaches to AI Regulation
+    speakers:
+      - anupam-guha.md
+  - time: 11:30–12:00
+    title: 'Regulating Military AI: Mission Impossible?'
+    speakers:
+      - anna-nadibaidze.md
+  - time: 12:00–13:30
+    title: Lunch
+  - time: 13:30–14:15
+    title: 'Keynote – EU AI Act: the latest from the ongoing trilogue negotiations'
+    speakers:
+      - kai-zenner.md
+  - time: 14:15–14:45
+    title: Regulating AI and the TESCREAL Bundle of Ideologies
+    speakers:
+      - emile-torres.md
+  - time: 14:45–15:00
+    title: Coffee break
+  - time: 15:00–16:00
+    title: Keynote – Evaluating LLMs is a minefield
+    speakers:
+      - sayash-kapoor.md
+  - time: 16:00–16:05
+    title: Closing

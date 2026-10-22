@@ -1,0 +1,157 @@
+year: 2022
+number: 4
+title: AI Governance Forum 2022
+theme: 'The EU AI Act: Towards a Global Consensus on Trustworthy AI?'
+subtitle: Implications for Healthcare
+date: '2022-11-26'
+startTime: '09:00'
+endTime: '17:00'
+timezone: CET
+format: online
+summary: >-
+  A full-day online edition on the EU AI Act proposal and whether it can lead to a global consensus
+  on trustworthy AI, with a focus on healthcare. Speakers were invited to contribute to a topical
+  collection in the Springer AI & Ethics Journal.
+logo: ../../assets/logos/2022.png
+oldSiteUrl: https://2022.ai-gf.com/
+speakers:
+  - speaker: alex-c-engler.md
+    roleAtTheTime: Fellow
+    organisationAtTheTime: The Brookings Institution
+    talkTitle: EU AI Act and Value Chain
+  - speaker: karine-perset.md
+    talkTitle: The OECD Perspective on the EU AI Act
+  - speaker: raja-chatila.md
+    roleAtTheTime: Professor Emeritus of AI, Robotics & IT Ethics
+    organisationAtTheTime: Sorbonne University
+    talkTitle: 'General Purpose AI Systems: What could they be?'
+  - speaker: merve-hickok.md
+    roleAtTheTime: Founder
+    organisationAtTheTime: AIethicist.org
+    talkTitle: 'Commitments & Practices: Importance of AI Governance & Accountability'
+  - speaker: sebastian-hallensleben.md
+    roleAtTheTime: Head of Digitalisation and AI (VDE Association for Electrical
+    organisationAtTheTime: Electronic & Information Technologies) OECD AI Policy Observatory
+    talkTitle: 'On the way to a European Approach to AI Governance: Role and'
+  - speaker: marion-ho-dac.md
+    roleAtTheTime: Professor of Private Law
+    organisationAtTheTime: University of Artois (France)
+    talkTitle: EU AI Act – A step further towards a European single market
+  - speaker: kirtan-padh.md
+    roleAtTheTime: PhD Student
+    organisationAtTheTime: TUM Munich
+    talkTitle: Correlations vs. Causality
+  - speaker: orian-dheu.md
+    roleAtTheTime: Doctoral Candidate
+    organisationAtTheTime: Center for IT & IP Law @ KU Leuven
+    talkTitle: 'AI Liability: Overview and Application of Recent European Proposals to Healthcare'
+  - speaker: carlos-munoz-ferrandis.md
+    roleAtTheTime: Technology & Regulatory Affairs Counsel
+    organisationAtTheTime: Hugging Face
+    talkTitle: Open Source Software and the EU AI Act
+  - speaker: marguerite-brac-de-la-perriere.md
+    roleAtTheTime: Associate
+    organisationAtTheTime: Lerins & BCW Lawyers
+    talkTitle: EU AI Act and Health Sector
+  - speaker: visar-berisha.md
+    roleAtTheTime: Associate Professor
+    organisationAtTheTime: Arizona State University
+    talkTitle: 'Digital Medicine and the Curse of Dimensionality: The Challenges with'
+  - speaker: karim-benyekhlef.md
+    roleAtTheTime: Professor
+    organisationAtTheTime: Université de Montréal
+    talkTitle: The Geopolitics of Regulation
+  - speaker: leon-kester.md
+    roleAtTheTime: Senior Research Scientist
+    organisationAtTheTime: TNO Netherlands
+    talkTitle: AI Safety for High Risk AI
+  - speaker: alejandro-saucedo.md
+    roleAtTheTime: Chief Scientist
+    organisationAtTheTime: Institute for Ethical AI & Machine Learning
+    talkTitle: The State of the European AI Regulatory Ecosystem from an ACM Tech Policy Perspective
+  - speaker: lucia-serena-rossi.md
+    roleAtTheTime: Judge
+    organisationAtTheTime: Court of Justice of the European Union
+    talkTitle: The Role of the EU Charter of Fundamental Rights and its Application by
+  - speaker: kai-zenner.md
+    roleAtTheTime: Head of Office and Digital Policy Adviser
+    organisationAtTheTime: European People’s Party Group
+    talkTitle: 'The EU AI Act: Will it be a success story or a stumbling block?'
+schedule:
+  - time: 09:00–09:20
+    title: Welcome
+    description: AI Transparency Institute
+  - time: 09:20–09:40
+    title: 'The EU AI Act: Will it be a success story or a stumbling block?'
+    speakers:
+      - kai-zenner.md
+  - time: 09:40–10:00
+    title: 'General Purpose AI Systems: What could they be?'
+    speakers:
+      - raja-chatila.md
+  - time: 10:00–10:20
+    title: The Role of the EU Charter of Fundamental Rights and its Application by
+    speakers:
+      - lucia-serena-rossi.md
+    description: the EU Court of Justice to Digital Matters
+  - time: 10:20–10:40
+    title: The State of the European AI Regulatory Ecosystem from an ACM Tech Policy Perspective
+    speakers:
+      - alejandro-saucedo.md
+  - time: 10:40–11:00
+    title: 'On the way to a European Approach to AI Governance: Role and'
+    speakers:
+      - sebastian-hallensleben.md
+    description: Legitimacy of Standardization
+  - time: 11:00–11:20
+    title: EU AI Act – A step further towards a European single market
+    speakers:
+      - marion-ho-dac.md
+  - time: 11:20–11:40
+    title: EU AI Act and Health Sector
+    speakers:
+      - marguerite-brac-de-la-perriere.md
+  - time: 11:40–12:00
+    title: Open Source Software and the EU AI Act
+    speakers:
+      - carlos-munoz-ferrandis.md
+  - time: 12:00–13:00
+    title: Lunch
+  - time: 13:00–13:20
+    title: EU AI Act and Value Chain
+    speakers:
+      - alex-c-engler.md
+  - time: 13:20–13:40
+    title: Correlations vs. Causality
+    speakers:
+      - kirtan-padh.md
+  - time: 13:40–14:00
+    title: AI Safety for High Risk AI
+    speakers:
+      - leon-kester.md
+  - time: 14:00–14:20
+    title: 'Digital Medicine and the Curse of Dimensionality: The Challenges with'
+    speakers:
+      - visar-berisha.md
+    description: Building Healthcare AI Tools that Generalize
+  - time: 14:20–14:40
+    title: 'AI Liability: Overview and Application of Recent European Proposals to Healthcare'
+    speakers:
+      - orian-dheu.md
+  - time: 14:40–15:00
+    title: 'Commitments & Practices: Importance of AI Governance & Accountability'
+    speakers:
+      - merve-hickok.md
+  - time: 15:00–15:40
+    title: Coffee Break & Socializing
+  - time: 15:40–16:00
+    title: The OECD Perspective on the EU AI Act
+    speakers:
+      - karine-perset.md
+  - time: 16:00–16:20
+    title: The Geopolitics of Regulation
+    speakers:
+      - karim-benyekhlef.md
+  - time: 16:20–16:30
+    title: Closing
+    description: AI Transparency Institute

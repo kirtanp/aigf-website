@@ -1,0 +1,133 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans--font-feature-settings: 'cv11';
+
+  --color-brand-blue: #3c0aff;
+  --color-brand-blue-dark: #2a00c7;
+  --color-brand-magenta: #ff2080;
+  /* Darker magenta for surfaces that carry white text (white on #FF2080 fails AA). */
+  --color-brand-magenta-dark: #d6006a;
+  --color-ink: #222222;
+  --color-muted: #5f5f6b;
+  --color-line: #e6e6ec;
+  --color-paper: #ffffff;
+  --color-wash: #f6f5fb;
+
+  /* Type scale. Headings use these sizes only, so every page shares one rhythm. */
+  --text-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.75rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.035em;
+  --text-title: clamp(1.875rem, 1.45rem + 1.6vw, 2.75rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.025em;
+  --text-lead: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-lead--line-height: 1.55;
+  --text-lead--letter-spacing: -0.01em;
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(90deg, var(--color-brand-blue) 0%, var(--color-brand-magenta) 100%);
+}
+
+/* For surfaces that carry white text: ends on the darker magenta. */
+@utility bg-brand-gradient-deep {
+  background-image: linear-gradient(90deg, var(--color-brand-blue) 0%, var(--color-brand-magenta-dark) 100%);
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(90deg, var(--color-brand-blue) 0%, var(--color-brand-magenta-dark) 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+@utility max-w-prose-70 {
+  max-width: 70ch;
+}
+
+/* Page width and side gutters, shared by every section. */
+@utility container-site {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Small uppercase label above section titles. */
+@utility eyebrow {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  html {
+    color: var(--color-ink);
+    background: var(--color-paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand-blue) 18%, transparent);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand-blue);
+    outline-offset: 3px;
+  }
+  /* Anchored sections clear the sticky header. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+/* Long-form Markdown (bios, pages). */
+.prose-content {
+  @apply max-w-prose-70 text-lg leading-relaxed;
+}
+.prose-content > * + * {
+  @apply mt-5;
+}
+.prose-content h2 {
+  @apply mt-12 text-2xl font-semibold tracking-tight;
+}
+.prose-content h3 {
+  @apply mt-8 text-xl font-semibold;
+}
+.prose-content a {
+  @apply text-brand-blue underline decoration-1 underline-offset-2 hover:decoration-2;
+}
+.prose-content ul {
+  @apply list-disc space-y-2 pl-6;
+}
+.prose-content ol {
+  @apply list-decimal space-y-2 pl-6;
+}
+
+/* Subtle motion only: elements fade up once as they scroll into view (see Base.astro). */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fade-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+      transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+}

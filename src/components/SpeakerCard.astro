@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import { initials, type Speaker } from '../lib/data';
+
+interface Props {
+  speaker: Speaker;
+  // Per-edition overrides (role and organisation at the time).
+  title?: string;
+  organisation?: string;
+  note?: string;
+  years?: number[];
+  // Eager-load the first row on pages where it sits above the fold.
+  eager?: boolean;
+}
+const { speaker, title = speaker.data.title, organisation = speaker.data.organisation, note, years, eager = false } = Astro.props;
+const { name, photo } = speaker.data;
+---
+
+<a href={`/speakers/${speaker.id}`} class="group block rounded-lg focus-visible:outline-offset-4">
+  <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-wash ring-1 ring-black/5 ring-inset">
+    {
+      photo ? (
+        <Image
+          src={photo}
+          alt={`Portrait of ${name}`}
+          widths={[240, 360, 480, 640]}
+          sizes="(min-width: 1280px) 300px, (min-width: 1024px) 23vw, (min-width: 640px) 30vw, 46vw"
+          loading={eager ? 'eager' : 'lazy'}
+          class="h-full w-full object-cover object-[50%_25%] contrast-[1.04] grayscale transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-focus-visible:grayscale-0"
+        />
+      ) : (
+        <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#ecebff_0%,#fbe9f2_100%)]" aria-hidden="true">
+          <span class="text-brand-gradient text-5xl font-semibold tracking-tight">{initials(name)}</span>
+        </div>
+      )
+    }
+  </div>
+  <div class="mt-4">
+    <p class="leading-snug font-semibold break-words text-ink transition group-hover:text-brand-blue">{name}</p>
+    {title && <p class="mt-1 text-sm leading-snug text-muted">{title}</p>}
+    {organisation && <p class="mt-1 text-sm leading-snug font-medium text-ink/85">{organisation}</p>}
+    {note && <p class="mt-2 text-sm leading-snug text-muted italic">{note}</p>}
+    {years && years.length > 0 && <p class="mt-2 text-xs font-medium tracking-wide text-muted tabular-nums">{years.slice().sort().join(' · ')}</p>}
+  </div>
+</a>

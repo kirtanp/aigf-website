@@ -1,0 +1,42 @@
+---
+// Venue, time, format and countdown for the current edition (Site settings → Current edition).
+import Facts from './Facts.astro';
+import { getCurrent, timeLabel, formatText, formatDate, isoDate } from '../lib/data';
+
+interface Props {
+  tone?: 'light' | 'dark';
+  // Show the date as a fact too (pages whose title doesn't already say it).
+  withDate?: boolean;
+}
+const { tone = 'light', withDate = false } = Astro.props;
+const current = await getCurrent();
+const facts = [
+  { label: 'Venue', value: current.venue },
+  ...(withDate ? [{ label: 'Date', value: formatDate(current.date) }] : []),
+  { label: 'Time', value: timeLabel(current) || 'To be announced' },
+  { label: 'Format', value: formatText(current) },
+];
+const label = tone === 'dark' ? 'text-white' : 'text-muted';
+const value = tone === 'dark' ? 'text-white' : 'text-ink';
+---
+
+<Facts facts={facts} tone={tone}>
+  <div class="lg:text-right" data-countdown={isoDate(current.date)} hidden>
+    <dt class:list={['eyebrow', label]}>Countdown</dt>
+    <dd class:list={['mt-2 text-base font-medium tabular-nums', value]} data-countdown-text></dd>
+  </div>
+</Facts>
+
+<script>
+  // "N days to go", computed in the visitor's browser so it never goes stale between builds.
+  document.querySelectorAll<HTMLElement>('[data-countdown]').forEach((el) => {
+    const out = el.querySelector('[data-countdown-text]');
+    const [y, m, d] = el.dataset.countdown!.split('-').map(Number);
+    const today = new Date();
+    const days = Math.round((Date.UTC(y, m - 1, d) - Date.UTC(today.getFullYear(), today.getMonth(), today.getDate())) / 864e5);
+    if (out && days >= 0) {
+      out.textContent = days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : `${days} days to go`;
+      el.hidden = false;
+    }
+  });
+</script>

@@ -1,0 +1,59 @@
+# Old WordPress URLs on ai-gf.com → new pages (Cloudflare Pages format: from to status).
+# Each old URL is listed with and without its trailing slash.
+# The year subdomains (2019–2025.ai-gf.com) are redirected in Cloudflare, not here: see DEPLOY.md.
+
+/index.php/about                               /about                             301
+/index.php/about/                              /about                             301
+/index.php/organizers                          /about                             301
+/index.php/organizers/                         /about                             301
+/index.php/guiding-principles                  /guiding-principles                301
+/index.php/guiding-principles/                 /guiding-principles                301
+/index.php/contact                             /contact                           301
+/index.php/contact/                            /contact                           301
+/index.php/ai-ethics-special-issue             /journal-call                      301
+/index.php/ai-ethics-special-issue/            /journal-call                      301
+/index.php/previous-editions                   /editions                          301
+/index.php/previous-editions/                  /editions                          301
+/index.php/schedule                            /programme                         301
+/index.php/schedule/                           /programme                         301
+/index.php/speakers                            /speakers                          301
+/index.php/speakers/                           /speakers                          301
+/index.php/blog                                /                                  301
+/index.php/blog/                               /                                  301
+/index.php/sample-page                         /                                  301
+/index.php/sample-page/                        /                                  301
+/index.php/2021/11/26/hello-world              /                                  301
+/index.php/2021/11/26/hello-world/             /                                  301
+/index.php                                     /                                  301
+/index.php/                                    /                                  301
+/index.php/speakers/brian-tse                  /speakers/brian-tse                301
+/index.php/speakers/brian-tse/                 /speakers/brian-tse                301
+/index.php/speakers/hsien-lee-tseng            /speakers/hsien-lee-tseng          301
+/index.php/speakers/hsien-lee-tseng/           /speakers/hsien-lee-tseng          301
+/index.php/speakers/pauline-charazac           /speakers/pauline-charazac         301
+/index.php/speakers/pauline-charazac/          /speakers/pauline-charazac         301
+/index.php/speakers/robert-praas               /speakers/robert-praas             301
+/index.php/speakers/robert-praas/              /speakers/robert-praas             301
+/index.php/speakers/laura-caroli               /speakers/laura-caroli             301
+/index.php/speakers/laura-caroli/              /speakers/laura-caroli             301
+/index.php/speakers/maty-bohacek               /speakers/maty-bohacek             301
+/index.php/speakers/maty-bohacek/              /speakers/maty-bohacek             301
+/index.php/speakers/kaitlin-tiches             /speakers/kaitlin-tiches           301
+/index.php/speakers/kaitlin-tiches/            /speakers/kaitlin-tiches           301
+/index.php/speakers/xavier-oberson             /speakers/xavier-oberson           301
+/index.php/speakers/xavier-oberson/            /speakers/xavier-oberson           301
+/index.php/speakers/thibault-schrepel          /speakers/thibault-schrepel        301
+/index.php/speakers/thibault-schrepel/         /speakers/thibault-schrepel        301
+/index.php/speakers/mari-sekino                /speakers/mari-sekino              301
+/index.php/speakers/mari-sekino/               /speakers/mari-sekino              301
+/index.php/speakers/mario-hernandez-ramos      /speakers/mario-hernandez-ramos    301
+/index.php/speakers/mario-hernandez-ramos/     /speakers/mario-hernandez-ramos    301
+
+# Slides that were linked from the old site.
+/wp-content/uploads/2025/12/The-EU-approach-to-AI-Governance_c.pdf /files/2025/The-EU-approach-to-AI-Governance_c.pdf 301
+/wp-content/uploads/2025/12/AI-Governance-Forum.pdf /files/2025/AI-Governance-Forum.pdf 301
+
+# WordPress feeds and admin no longer exist.
+/feed/*                                        /                                  301
+/wp-admin/*                                    /                                  301
+/wp-login.php                                  /                                  301

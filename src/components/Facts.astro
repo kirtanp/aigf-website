@@ -1,0 +1,27 @@
+---
+// A row of labelled facts (venue, date, format...) under a page or hero title.
+// The first fact is the wide one (usually the venue). Extra items go in the slot.
+interface Props {
+  facts: { label: string; value?: string }[];
+  // 'dark' on the gradient, 'light' on white.
+  tone?: 'light' | 'dark';
+}
+const { facts, tone = 'light' } = Astro.props;
+const dark = tone === 'dark';
+// Small text over the gradient's magenta end must be pure white to pass AA.
+const label = dark ? 'text-white' : 'text-muted';
+const value = dark ? 'text-white' : 'text-ink';
+const shown = facts.filter((f) => f.value);
+---
+
+<dl class:list={['grid grid-cols-2 gap-x-6 gap-y-6 border-t pt-8 text-sm sm:gap-x-10 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-[1.6fr]', dark ? 'border-white/20' : 'border-line']}>
+  {
+    shown.map((f, i) => (
+      <div class:list={[i === 0 && 'col-span-2 lg:col-span-1']}>
+        <dt class:list={['eyebrow', label]}>{f.label}</dt>
+        <dd class:list={['mt-2 text-base font-medium', value]}>{f.value}</dd>
+      </div>
+    ))
+  }
+  <slot />
+</dl>

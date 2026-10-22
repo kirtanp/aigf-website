@@ -1,0 +1,20 @@
+services:
+  # Dev server with live reload: edits in src/ and public/ show up at once.
+  site:
+    build:
+      context: .
+      target: dev
+    ports:
+      - "${PORT:-4321}:4321"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+
+  # The production build, served as Cloudflare Pages would serve it.
+  preview:
+    profiles: [preview]
+    build:
+      context: .
+      target: preview
+    ports:
+      - "${PREVIEW_PORT:-4322}:4321"

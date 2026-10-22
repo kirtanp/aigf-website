@@ -1,0 +1,116 @@
+year: 2025
+number: 7
+title: AI Governance Forum 2025
+theme: 'AI Governance: Open Questions'
+date: '2025-12-10'
+startTime: '14:00'
+endTime: '17:00'
+timezone: CET
+format: hybrid
+city: Lausanne
+venue: Swiss Institute of Comparative Law, University of Lausanne
+summary: >-
+  The seventh edition, in Lausanne and online, brought together Asian, European and Swiss, and US
+  perspectives on the open questions in AI governance.
+logo: ../../assets/logos/2025.png
+oldSiteUrl: https://2025.ai-gf.com/
+speakers:
+  - speaker: mario-hernandez-ramos.md
+    roleAtTheTime: Professor of Constitutional Law
+    organisationAtTheTime: Universidad Complutense de Madrid
+    sessionRole: Keynote
+  - speaker: hsien-lee-tseng.md
+    roleAtTheTime: Associate Professor
+    organisationAtTheTime: Department of Public Administration and Management, National University of Tainan
+    talkTitle: Asian Perspectives on AI Governance
+  - speaker: mari-sekino.md
+    roleAtTheTime: Founder & CEO
+    organisationAtTheTime: QERA Intelligence Frontier Theorist & Practitioner
+    talkTitle: Asian Perspectives on AI Governance
+  - speaker: xavier-oberson.md
+    roleAtTheTime: Professor of Swiss and International Tax Law
+    organisationAtTheTime: University of Geneva
+    talkTitle: European and Swiss Perspectives on AI Governance
+  - speaker: thibault-schrepel.md
+    roleAtTheTime: Associate Professor of Law
+    organisationAtTheTime: Vrije Universiteit Amsterdam
+  - speaker: kaitlin-tiches.md
+    roleAtTheTime: Medical Librarian & Knowledge Manager
+    organisationAtTheTime: Digital Wellness Lab, Boston Children’s Hospital
+    talkTitle: US Perspectives on AI Governance
+  - speaker: maty-bohacek.md
+    roleAtTheTime: Researcher
+    organisationAtTheTime: Stanford University and Google DeepMind
+    talkTitle: US Perspectives on AI Governance
+  - speaker: laura-caroli.md
+    roleAtTheTime: Senior Policy Advisor
+    organisationAtTheTime: European Parliament
+    talkTitle: European and Swiss Perspectives on AI Governance
+  - speaker: robert-praas.md
+    roleAtTheTime: Data Scientist
+    organisationAtTheTime: CEPS
+    talkTitle: European and Swiss Perspectives on AI Governance
+  - speaker: pauline-charazac.md
+    roleAtTheTime: Head of Policy Engagement
+    organisationAtTheTime: CeSIA – Center for AI Safety
+    talkTitle: European and Swiss Perspectives on AI Governance
+  - speaker: brian-tse.md
+    roleAtTheTime: Founder and CEO
+    organisationAtTheTime: Concordia AI
+    talkTitle: Asian Perspectives on AI Governance
+schedule:
+  - time: 14:00–14:05
+    title: Welcome to the AI Governance Forum’25
+  - time: 14:05–14:30
+    title: 'Keynote: The impact of Artificial Intelligence on Constitutional Law'
+    speakers:
+      - mario-hernandez-ramos.md
+  - time: 14:30–15:00
+    title: Asian Perspectives on AI Governance
+  - time: 14:30–14:40
+    speakers:
+      - hsien-lee-tseng.md
+  - time: 14:40–14:50
+    speakers:
+      - mari-sekino.md
+  - time: 14:50–15:00
+    speakers:
+      - brian-tse.md
+  - time: 15:00–15:15
+    title: Discussion on Asian Perspectives
+  - time: 15:15–15:25
+    title: Coffee Break
+  - time: 15:25–16:20
+    title: European and Swiss Perspectives on AI Governance
+  - time: 15:25–15:35
+    speakers:
+      - xavier-oberson.md
+  - time: 15:35–15:45
+    links:
+      - label: Slides
+        url: /files/2025/The-EU-approach-to-AI-Governance_c.pdf
+    speakers:
+      - laura-caroli.md
+  - time: 15:45–15:55
+    speakers:
+      - robert-praas.md
+  - time: 15:55–16:05
+    speakers:
+      - pauline-charazac.md
+  - time: 16:05–16:20
+    title: Discussion on European and Swiss Perspectives
+  - time: 16:20–16:50
+    title: US Perspectives on AI Governance
+  - time: 16:20–16:30
+    links:
+      - label: Slides
+        url: /files/2025/AI-Governance-Forum.pdf
+    speakers:
+      - kaitlin-tiches.md
+  - time: 16:30–16:40
+    speakers:
+      - maty-bohacek.md
+  - time: 16:40–16:50
+    title: Discussion on US Perspectives
+  - time: 16:50–17:00
+    title: Wrap-up

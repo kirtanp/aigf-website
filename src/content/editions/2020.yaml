@@ -1,0 +1,257 @@
+year: 2020
+number: 2
+title: AI Governance Forum 2020
+theme: From the Governance of AI to Governance via AI?
+subtitle: A focus on COVID-19 and Climate Change
+date: '2020-06-08'
+endDate: '2020-06-09'
+timezone: CEST
+format: online
+summary: >-
+  Held online over two days during the COVID-19 pandemic, the second edition asked whether AI could
+  help govern crises, with panels on healthcare, contact tracing and privacy, and digital ethics,
+  and a focus on climate change.
+logo: ../../assets/logos/2020.png
+oldSiteUrl: https://2020.ai-gf.com/
+speakers:
+  - speaker: yoshua-bengio.md
+    organisationAtTheTime: Mila Center, University of Montreal
+    sessionRole: Keynote
+  - speaker: luca-ferretti.md
+    organisationAtTheTime: University of Oxford
+    sessionRole: Panelist
+  - speaker: paul-nemitz.md
+    organisationAtTheTime: EU Commission
+    sessionRole: Keynote
+  - speaker: karine-perset.md
+    organisationAtTheTime: OECD
+    sessionRole: Panelist
+  - speaker: marc-rotenberg.md
+    organisationAtTheTime: EPIC
+    sessionRole: Panelist
+  - speaker: peter-burgess.md
+    organisationAtTheTime: École Normale Supérieure Paris
+    sessionRole: Panelist
+  - speaker: christoph-lutge.md
+    organisationAtTheTime: Technical University Munich
+    sessionRole: Panelist
+  - speaker: yi-zheng.md
+    organisationAtTheTime: Beijing Academy of Artificial Intelligence
+    sessionRole: Panelist
+  - speaker: seungryong-kim.md
+    organisationAtTheTime: Korea University
+    sessionRole: Panelist
+  - speaker: danielle-belgrave.md
+    organisationAtTheTime: Microsoft Research
+    sessionRole: Panelist
+  - speaker: hanan-salam.md
+    organisationAtTheTime: Emlyon Business School
+    sessionRole: Panelist
+  - speaker: sasha-rubel.md
+    organisationAtTheTime: UNESCO
+    sessionRole: Panelist
+  - speaker: joanna-bryson.md
+    organisationAtTheTime: Center for Digital Governance Hertie School
+    sessionRole: Panelist
+  - speaker: lenka-zdeborova.md
+    organisationAtTheTime: CNRS
+    sessionRole: Moderator
+  - speaker: anne-cambon-thomsen.md
+    organisationAtTheTime: CNRS
+    sessionRole: Panelist
+  - speaker: ricardo-chavarriaga.md
+    organisationAtTheTime: ZHAW
+    sessionRole: Moderator
+  - speaker: ulises-cortes.md
+    organisationAtTheTime: Barcelona Supercomputing Center
+    sessionRole: Panelist
+  - speaker: amandeep-singh-gill.md
+    organisationAtTheTime: Graduate Institute Geneva
+    sessionRole: Panelist
+  - speaker: karim-berkouk.md
+    organisationAtTheTime: EU Commission
+    sessionRole: Panelist
+  - speaker: bertrand-pailhes.md
+    organisationAtTheTime: CNIL
+    talkTitle: How humans beat AI in the Covid-19 crisis and what we can learn from it
+  - speaker: johan-rochel.md
+    organisationAtTheTime: Ethix Lab
+    talkTitle: Medical Triage and Ethics Dilemma
+  - speaker: yves-alexandre-de-montjoye.md
+    organisationAtTheTime: Imperial College London
+    sessionRole: Panelist
+  - speaker: jan-kleijssen.md
+    organisationAtTheTime: Council of Europe
+    sessionRole: Panelist
+  - speaker: jean-henri-morin.md
+    organisationAtTheTime: University of Geneva
+    sessionRole: Panelist
+  - speaker: pranav-samir-rajpurkar.md
+    organisationAtTheTime: Stanford University
+    sessionRole: Moderator
+  - speaker: issam-ibnouhsein.md
+    organisationAtTheTime: Quantmetry
+    sessionRole: Panelist
+  - speaker: thomas-gerbaud.md
+    organisationAtTheTime: AltGR
+    sessionRole: Panelist
+  - speaker: hubert-etienne.md
+    organisationAtTheTime: Facebook
+    sessionRole: Panelist
+  - speaker: francois-levin.md
+    organisationAtTheTime: École Polytechnique Paris
+    sessionRole: Panelist
+  - speaker: maxime-stauffer.md
+    organisationAtTheTime: Geneva Science Policy Interface
+    sessionRole: Panelist
+  - speaker: pierre-paperon.md
+    organisationAtTheTime: Exploit.digital
+    sessionRole: Panelist
+  - speaker: kirell-benzi.md
+    organisationAtTheTime: ekino
+    talkTitle: Art and Data Science
+  - speaker: melisande-teng.md
+    organisationAtTheTime: MILA Center
+    sessionRole: Panelist
+  - speaker: pierre-philippe-mathieu.md
+    organisationAtTheTime: European Space Agency
+    sessionRole: Panelist
+  - speaker: david-rolnick.md
+    organisationAtTheTime: University of Pennsylvania
+    sessionRole: Panelist
+  - speaker: eva-thelisson.md
+schedule:
+  - day: June 8th, 2020
+    time: 08:00–08:30
+    title: Setting-Up
+    description: Get your internet connection running, and say “Hello!” over virtual coffee
+  - day: June 8th, 2020
+    time: 08:30–09:00
+    title: Welcome and Overview
+    speakers:
+      - eva-thelisson.md
+  - day: June 8th, 2020
+    time: 09:00–11:00
+    title: 'Panel: Healthcare and AI'
+    links:
+      - label: Watch Video
+        url: https://youtu.be/-PXoMAzjRr4
+      - label: Slides
+        url: /files/2020/Anne-Cambon-Slides-AIGF.pdf
+    speakers:
+      - ricardo-chavarriaga.md
+      - ulises-cortes.md
+      - danielle-belgrave.md
+      - amandeep-singh-gill.md
+      - anne-cambon-thomsen.md
+      - yi-zheng.md
+      - karim-berkouk.md
+  - day: June 8th, 2020
+    time: 11:00–11:30
+    title: E-Coffee Break
+  - day: June 8th, 2020
+    time: 11:30–12:00
+    title: 'Talk: How humans beat AI in the Covid-19 crisis and what we can learn from it'
+    speakers:
+      - bertrand-pailhes.md
+  - day: June 8th, 2020
+    time: 12:00–13:00
+    title: Lunch Break
+  - day: June 8th, 2020
+    time: 13:00–13:30
+    title: 'Talk: Medical Triage and Ethics Dilemma'
+    speakers:
+      - johan-rochel.md
+  - day: June 8th, 2020
+    time: 13:30–13:45
+    title: E-Coffee Break
+  - day: June 8th, 2020
+    time: 13:45–14:45
+    title: 'Keynote: A Test for Responsible Development of AI: AI Based Covid-19 Risk Assessment App'
+    links:
+      - label: Slides
+        url: /files/2020/AIGF-8jun2020.pdf
+    speakers:
+      - yoshua-bengio.md
+  - day: June 8th, 2020
+    time: 14:45–15:15
+    title: E-Coffee Break
+  - day: June 8th, 2020
+    time: 15:15–17:15
+    title: 'Panel: Contact Tracing, Privacy and Data Governance'
+    links:
+      - label: Watch Video
+        url: https://youtu.be/Md2TrKuJ4OQ
+    speakers:
+      - lenka-zdeborova.md
+      - seungryong-kim.md
+      - marc-rotenberg.md
+      - yves-alexandre-de-montjoye.md
+      - jan-kleijssen.md
+      - luca-ferretti.md
+      - jean-henri-morin.md
+  - day: June 8th, 2020
+    time: 15:15–17:15
+    title: 'Panel: AI Applications and Digital Ethics'
+    links:
+      - label: Watch Video
+        url: https://youtu.be/FbEhfljFOJ4
+    speakers:
+      - pranav-samir-rajpurkar.md
+      - christoph-lutge.md
+      - issam-ibnouhsein.md
+      - thomas-gerbaud.md
+      - hubert-etienne.md
+      - francois-levin.md
+      - hanan-salam.md
+  - day: June 9th, 2020
+    time: 09:30–10:00
+    title: 'Keynote: Power, Liberty and Democracy in the Age of AI'
+    speakers:
+      - paul-nemitz.md
+  - day: June 9th, 2020
+    time: 10:00–12:00
+    title: 'Panel: Democratic and Public Policy Challenges'
+    links:
+      - label: Watch Video
+        url: https://youtu.be/05ckLvHFNpg
+      - label: Slides
+        url: http://2020.ai-gf.com/wp-content/uploads/2021/11/Pierre-Paperon-Governance-of-AI.mp4
+    speakers:
+      - maxime-stauffer.md
+      - peter-burgess.md
+      - karine-perset.md
+      - pierre-paperon.md
+      - joanna-bryson.md
+      - sasha-rubel.md
+    description: Moderated by Diane de Pompignan
+  - day: June 9th, 2020
+    time: 12:00–13:30
+    title: Lunch Break
+  - day: June 9th, 2020
+    time: 13:30–14:00
+    title: 'Talk: Art and Data Science'
+    speakers:
+      - kirell-benzi.md
+  - day: June 9th, 2020
+    time: 14:00–14:15
+    title: E-Coffee Break
+  - day: June 9th, 2020
+    time: 14:15–15:45
+    title: 'Panel: Climate Change and Sustainability'
+    links:
+      - label: Watch Video
+        url: https://youtu.be/C-3BsnOupTo
+      - label: Slides
+        url: /files/2020/David-Rolnick.pdf
+    speakers:
+      - peter-burgess.md
+      - melisande-teng.md
+      - pierre-philippe-mathieu.md
+      - david-rolnick.md
+    description: |-
+      Nicolas Miaihle (The Future Society)
+      Diane de Pompignan (AI Transparency Institute)
+  - day: June 9th, 2020
+    time: 15:45–16:15
+    title: Conclusion

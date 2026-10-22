@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import SpeakerCard from '../../components/SpeakerCard.astro';
+import { getSpeakers, getAppearances, getEditions } from '../../lib/data';
+
+const speakers = await getSpeakers();
+const appearances = await getAppearances();
+const years = (await getEditions()).filter((e) => e.data.speakers.length > 0).map((e) => e.data.year);
+const firstYear = years.at(-1);
+const chip =
+  'inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-full border border-line bg-paper px-4 text-sm font-medium tabular-nums transition hover:border-ink/30 aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+---
+
+<Base title="Speakers" description={`Speakers at the AI Governance Forum since ${firstYear}.`}>
+  <section class="container-site pt-16 pb-24 sm:pt-24">
+    <div class="fade-in max-w-3xl">
+      <p class="eyebrow text-brand-blue">Since {firstYear}</p>
+      <h1 class="text-display mt-4 font-semibold">Speakers</h1>
+      <p class="text-lead mt-6 text-muted" id="speaker-count" aria-live="polite">
+        {speakers.length} people have spoken at the AI Governance Forum since {firstYear}.
+      </p>
+    </div>
+
+    <div class="sticky top-16 z-30 -mx-5 mt-12 border-y border-line bg-paper/90 px-5 py-3 backdrop-blur-md sm:mx-0 sm:rounded-full sm:border sm:px-2 sm:py-2">
+      <div class="flex gap-2 overflow-x-auto [scrollbar-width:none]" role="group" aria-label="Filter by year" id="year-filter">
+        <button type="button" data-year="" aria-pressed="true" class={chip}>All years</button>
+        {years.map((y) => <button type="button" data-year={y} aria-pressed="false" class={chip}>{y}</button>)}
+      </div>
+    </div>
+
+    <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-12 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:grid-cols-5" id="speaker-grid">
+      {
+        speakers.map((s, i) => {
+          const ys = (appearances.get(s.id) ?? []).map((a) => a.year);
+          return (
+            <li data-years={ys.join(' ')}>
+              <SpeakerCard speaker={s} years={ys} eager={i < 5} />
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Base>
+
+<script define:vars={{ total: speakers.length, firstYear }}>
+  // Progressive enhancement: without JS every speaker is listed.
+  const buttons = document.querySelectorAll('#year-filter button');
+  const items = document.querySelectorAll('#speaker-grid > li');
+  const count = document.getElementById('speaker-count');
+  function apply(year) {
+    let shown = 0;
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.year === year)));
+    items.forEach((li) => {
+      li.hidden = year !== '' && !(li.dataset.years ?? '').split(' ').includes(year);
+      if (!li.hidden) shown++;
+    });
+    count.textContent = year
+      ? `${shown} ${shown === 1 ? 'speaker' : 'speakers'} at the ${year} edition.`
+      : `${total} people have spoken at the AI Governance Forum since ${firstYear}.`;
+  }
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      const year = b.dataset.year ?? '';
+      apply(year);
+      history.replaceState(null, '', year ? `#${year}` : location.pathname);
+    }),
+  );
+  const fromHash = location.hash.slice(1);
+  if (fromHash) apply(fromHash);
+</script>

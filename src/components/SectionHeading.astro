@@ -1,0 +1,28 @@
+---
+// Eyebrow + title (+ optional "see all" link) used at the top of every section.
+interface Props {
+  eyebrow?: string;
+  title: string;
+  href?: string;
+  linkLabel?: string;
+  as?: 'h1' | 'h2';
+  id?: string;
+}
+const { eyebrow, title, href, linkLabel, as: Tag = 'h2', id } = Astro.props;
+---
+
+<div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+  <div class="max-w-3xl">
+    {eyebrow && <p class="eyebrow text-brand-blue">{eyebrow}</p>}
+    <Tag id={id} class:list={['text-title font-semibold text-balance', eyebrow && 'mt-3']}>{title}</Tag>
+    <slot />
+  </div>
+  {
+    href && linkLabel && (
+      <a href={href} class="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue">
+        {linkLabel}
+        <svg aria-hidden="true" viewBox="0 0 16 16" class="size-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+      </a>
+    )
+  }
+</div>

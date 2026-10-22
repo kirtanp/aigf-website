@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import { getEntries } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import Facts from '../../components/Facts.astro';
+import SpeakerCard from '../../components/SpeakerCard.astro';
+import Schedule from '../../components/Schedule.astro';
+import { getPastEditions, formatDate, formatText, timeLabel, ordinal, type Edition } from '../../lib/data';
+
+// The current edition has its own page (/programme); this route is for past editions.
+export async function getStaticPaths() {
+  const editions = await getPastEditions();
+  return editions.map((edition, i) => ({
+    params: { year: String(edition.data.year) },
+    // Editions are sorted newest first.
+    props: { edition, newer: editions[i - 1]?.data.year, older: editions[i + 1]?.data.year },
+  }));
+}
+
+const { edition, newer, older } = Astro.props as { edition: Edition; newer?: number; older?: number };
+const e = edition.data;
+const people = await getEntries(e.speakers.map((a) => a.speaker));
+const speakers = e.speakers.map((a, i) => ({ a, speaker: people[i] })).filter((x) => x.speaker && !x.speaker.data.draft);
+const facts = [
+  { label: 'Venue', value: e.venue ?? (e.format === 'online' ? 'Online' : e.city) },
+  { label: 'Date', value: formatDate(e.date, e.endDate) },
+  { label: 'Time', value: timeLabel(e) },
+  { label: 'Format', value: formatText(e) },
+];
+const slides = e.schedule.flatMap((item) => item.links);
+---
+
+<Base title={`${e.title}`} description={`${e.title}${e.theme ? `: ${e.theme}` : ''}. ${formatDate(e.date, e.endDate)}.`}>
+  <PageHeader back={{ href: '/editions', label: 'Past editions' }} eyebrow={`${ordinal(e.number)} edition · ${e.year}`} title={e.theme ?? e.title} lead={e.subtitle}>
+    <div class="mt-12"><Facts facts={facts} /></div>
+  </PageHeader>
+
+  {
+    (e.summary || e.supportedBy.length > 0) && (
+      <section class="container-site pb-20 sm:pb-24" data-reveal>
+        <div class="grid gap-8 lg:grid-cols-12">
+          <p class="eyebrow text-brand-blue lg:col-span-3">Summary</p>
+          <div class="lg:col-span-9">
+            {e.summary && <div class="text-lead max-w-prose-70 space-y-5">{e.summary.split(/\n\n+/).map((p) => <p>{p}</p>)}</div>}
+            {e.supportedBy.length > 0 && <p class="mt-6 text-sm text-muted">Supported by {e.supportedBy.join(', ')}.</p>}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    speakers.length > 0 && (
+      <section class="container-site pb-20 sm:pb-28" aria-labelledby="speakers-title" data-reveal>
+        <div class="border-t border-line pt-16 sm:pt-20">
+          <SectionHeading title="Speakers" id="speakers-title">
+            <p class="mt-3 text-muted">Roles and organisations as they were in {e.year}.</p>
+          </SectionHeading>
+          <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
+            {speakers.map(({ a, speaker }) => (
+              <li>
+                <SpeakerCard speaker={speaker!} title={a.roleAtTheTime ?? speaker!.data.title} organisation={a.organisationAtTheTime ?? speaker!.data.organisation} note={a.talkTitle} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="container-site pb-20 sm:pb-28" aria-labelledby="programme-title" id="programme" data-reveal>
+    <div class="border-t border-line pt-16 sm:pt-20">
+      <SectionHeading title="Programme" id="programme-title">
+        {slides.length > 0 && <p class="mt-3 text-muted">Slides are linked next to the talks they belong to.</p>}
+      </SectionHeading>
+      <div class="mt-10"><Schedule edition={edition} /></div>
+    </div>
+  </section>
+
+  {
+    e.photos.length > 0 && (
+      <section class="container-site pb-20 sm:pb-28" aria-labelledby="photos-title" data-reveal>
+        <div class="border-t border-line pt-16 sm:pt-20">
+          <SectionHeading title="Photos" id="photos-title" />
+          <ul class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {e.photos.map((p) => (
+              <li>
+                <Image src={p.image} alt={p.alt} widths={[480, 960]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" class="aspect-[3/2] w-full rounded-xl object-cover" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <nav class="container-site pb-24" aria-label="Other editions">
+    <div class="grid gap-4 border-t border-line pt-10 sm:grid-cols-2">
+      {
+        older ? (
+          <a href={`/editions/${older}`} class="group rounded-2xl p-6 ring-1 ring-line transition hover:ring-brand-blue/40">
+            <span class="text-sm text-muted">← Previous edition</span>
+            <span class="mt-1 block text-2xl font-semibold tracking-tight tabular-nums group-hover:text-brand-blue">{older}</span>
+          </a>
+        ) : (
+          <span class="hidden sm:block" />
+        )
+      }
+      {
+        newer ? (
+          <a href={`/editions/${newer}`} class="group rounded-2xl p-6 text-right ring-1 ring-line transition hover:ring-brand-blue/40">
+            <span class="text-sm text-muted">Next edition →</span>
+            <span class="mt-1 block text-2xl font-semibold tracking-tight tabular-nums group-hover:text-brand-blue">{newer}</span>
+          </a>
+        ) : (
+          <a href="/programme" class="group rounded-2xl p-6 text-right ring-1 ring-line transition hover:ring-brand-blue/40">
+            <span class="text-sm text-muted">This year →</span>
+            <span class="mt-1 block text-2xl font-semibold tracking-tight group-hover:text-brand-blue">Programme</span>
+          </a>
+        )
+      }
+    </div>
+  </nav>
+</Base>

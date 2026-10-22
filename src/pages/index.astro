@@ -1,0 +1,215 @@
+---
+import { getEntries } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import RegisterButton from '../components/RegisterButton.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SpeakerCard from '../components/SpeakerCard.astro';
+import EventFacts from '../components/EventFacts.astro';
+import { getCurrent, getHome, getSite, getPastEditions, getCurrentEdition, getSpeakers, formatDate, placeLabel, ordinal, isoDate, updatesHref, eventJsonLd, type Edition } from '../lib/data';
+
+const current = await getCurrent();
+const home = await getHome();
+const site = await getSite();
+const past = await getPastEditions();
+const edition = await getCurrentEdition();
+const speakerCount = (await getSpeakers()).length;
+
+// Speakers: this year's once announced; until then, the latest past edition's.
+async function lineup(e: Edition | undefined) {
+  if (!e) return [];
+  const people = await getEntries(e.data.speakers.map((a) => a.speaker));
+  return e.data.speakers
+    .map((a, i) => ({ appearance: a, speaker: people[i] }))
+    .filter((p) => p.speaker && !p.speaker.data.draft)
+    .map((p) => ({ ...p, speaker: p.speaker! }));
+}
+const currentLineup = await lineup(edition);
+const lastEdition = past.find((e) => e.data.speakers.length > 0);
+const showcase = currentLineup.length > 0 ? currentLineup : await lineup(lastEdition);
+
+const date = formatDate(current.date);
+const place = placeLabel(current);
+const jsonLd = eventJsonLd(current, site, { url: new URL('/', Astro.site).href, image: new URL('/og.png', Astro.site).href, description: home.tagline || undefined });
+const firstYear = past.at(-1)?.data.year;
+---
+
+<Base jsonLd={jsonLd}>
+  <!-- Hero -->
+  <section class="container-site pt-3 sm:pt-5" aria-labelledby="hero-title">
+    <div class="bg-brand-gradient-deep relative isolate overflow-hidden rounded-[1.75rem] text-white">
+      <!-- Decoration: concentric rings, a nod to a round-table forum. -->
+      <svg aria-hidden="true" class="pointer-events-none absolute -top-[30%] -right-[45%] -z-10 w-[130%] opacity-[0.16] sm:-right-[20%] sm:w-[85%] lg:-top-[45%] lg:-right-[12%] lg:w-[62%]" viewBox="0 0 800 800" fill="none" stroke="white">
+        {[390, 330, 270, 210, 150, 90].map((r) => <circle cx="400" cy="400" r={r} stroke-width="1.25" />)}
+      </svg>
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_70%_at_85%_10%,rgb(255_255_255/0.14),transparent_70%)]"></div>
+
+      <div class="fade-in px-6 pt-12 pb-8 sm:px-12 sm:pt-20 lg:px-16 lg:pt-24">
+        <p class="eyebrow text-white">{ordinal(current.number)} edition<span class="mx-2.5 opacity-60" aria-hidden="true">·</span>{place}</p>
+        <h1 id="hero-title" class="text-display mt-6 max-w-5xl font-semibold text-balance">{current.title}</h1>
+        <p class="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <time datetime={isoDate(current.date)}>{date}</time>
+        </p>
+        {(current.theme || home.tagline) && <p class="text-lead mt-4 max-w-2xl text-white">{current.theme || home.tagline}</p>}
+
+        <div class="mt-10 flex flex-wrap items-center gap-3">
+          <RegisterButton tone="dark" />
+          {
+            current.livestreamUrl ? (
+              <a href={current.livestreamUrl} class="inline-flex h-12 items-center rounded-full border border-white/50 px-6 font-semibold transition hover:bg-white/10">
+                Watch online
+              </a>
+            ) : (
+              <a href="#editions" class="inline-flex h-12 items-center rounded-full px-0 font-semibold sm:px-3 text-white underline decoration-white/40 underline-offset-4 transition hover:decoration-white">
+                Explore past editions
+              </a>
+            )
+          }
+        </div>
+
+        <div class="mt-10 sm:mt-14 lg:mt-20"><EventFacts tone="dark" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="container-site py-20 sm:py-28" aria-labelledby="intro-title" data-reveal>
+    <div class="grid gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-4">
+        <p class="eyebrow text-brand-blue">About</p>
+        <h2 id="intro-title" class="text-title mt-3 font-semibold">The forum</h2>
+      </div>
+      <div class="lg:col-span-8">
+        <div class="text-lead max-w-prose-70 space-y-6 text-ink">
+          {home.intro.split(/\n\n+/).map((p) => <p>{p}</p>)}
+        </div>
+        {
+          home.showStats && (
+            <ul class="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-t border-line pt-6 text-sm text-muted">
+              <li><span class="font-semibold text-ink tabular-nums">{past.length}</span> past editions</li>
+              <li><span class="font-semibold text-ink tabular-nums">{speakerCount}</span> speakers</li>
+              {firstYear && <li>Since <span class="font-semibold text-ink tabular-nums">{firstYear}</span></li>}
+            </ul>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Themes -->
+  {
+    home.themes.length > 0 && (
+      <section class="bg-wash" aria-labelledby="themes-title">
+        <div class="container-site py-20 sm:py-28" data-reveal>
+          <SectionHeading eyebrow={`${current.year} edition`} title="Themes" id="themes-title" />
+          <ol class="mt-12 grid gap-px overflow-hidden rounded-2xl bg-line ring-1 ring-line md:grid-cols-3">
+            {home.themes.map((t, i) => (
+              <li class="bg-paper p-7 sm:p-9">
+                <p class="text-brand-gradient text-sm font-semibold tabular-nums">{String(i + 1).padStart(2, '0')}</p>
+                <h3 class="mt-10 text-xl font-semibold tracking-tight">{t.title}</h3>
+                <p class="mt-3 leading-relaxed text-muted">{t.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Speakers -->
+  <section class="container-site py-20 sm:py-28" aria-labelledby="speakers-title" data-reveal>
+    {
+      currentLineup.length > 0 ? (
+        <SectionHeading eyebrow={`${current.year} edition`} title="Speakers" id="speakers-title" href="/speakers" linkLabel={`All ${speakerCount} speakers`} />
+      ) : (
+        <SectionHeading eyebrow="Speakers" title={`${current.year} speakers will be announced soon`} id="speakers-title" href="/speakers" linkLabel={`All ${speakerCount} speakers since ${firstYear}`}>
+          {lastEdition && <p class="mt-4 text-lg text-muted">Meanwhile, meet the speakers of the {lastEdition.data.year} edition.</p>}
+        </SectionHeading>
+      )
+    }
+    {
+      showcase.length > 0 && (
+        <ul class="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-8">
+          {showcase.map(({ speaker, appearance }) => (
+            <li>
+              <SpeakerCard speaker={speaker} title={appearance.roleAtTheTime ?? speaker.data.title} organisation={appearance.organisationAtTheTime ?? speaker.data.organisation} />
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <!-- Past editions -->
+  <section class="container-site pb-20 sm:pb-28" aria-labelledby="editions-title" id="editions" data-reveal>
+    <div class="border-t border-line pt-20 sm:pt-28">
+      <SectionHeading eyebrow={firstYear ? `Since ${firstYear}` : undefined} title="Past editions" id="editions-title" href="/editions" linkLabel="All editions" />
+      <ol class="mt-12 border-t border-line">
+        {
+          past.map((e) => (
+            <li class="border-b border-line">
+              <a href={`/editions/${e.data.year}`} class="group grid gap-x-8 gap-y-2 py-6 sm:grid-cols-[7rem_1fr_auto] sm:items-baseline sm:py-7">
+                <p class="text-3xl font-semibold tracking-tight tabular-nums transition group-hover:text-brand-blue sm:text-4xl">{e.data.year}</p>
+                <div>
+                  <p class="text-lg leading-snug font-semibold text-balance">{e.data.theme ?? e.data.title}</p>
+                  {e.data.subtitle && <p class="mt-1 text-muted">{e.data.subtitle}</p>}
+                </div>
+                <p class="flex items-center gap-4 text-sm whitespace-nowrap text-muted sm:justify-end">
+                  <span>{formatDate(e.data.date, e.data.endDate)} · {placeLabel(e.data)}</span>
+                  <svg aria-hidden="true" viewBox="0 0 16 16" class="hidden size-4 text-brand-blue transition group-hover:translate-x-1 sm:block" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+                </p>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- Organiser -->
+  <section class="bg-wash" aria-labelledby="organiser-title">
+    <div class="container-site grid gap-8 py-20 sm:py-28 lg:grid-cols-12" data-reveal>
+      <div class="lg:col-span-4">
+        <p class="eyebrow text-brand-blue">Organiser</p>
+        <h2 id="organiser-title" class="text-title mt-3 font-semibold text-balance">{site.organiserName}</h2>
+      </div>
+      <div class="lg:col-span-8">
+        {site.organiserSummary && <p class="text-lead max-w-prose-70">{site.organiserSummary}</p>}
+        {
+          site.organiserMissions.length > 0 && (
+            <ul class="mt-8 flex flex-wrap gap-2">
+              {site.organiserMissions.map((m) => (
+                <li class="rounded-full border border-line bg-paper px-4 py-1.5 text-sm font-medium">{m}</li>
+              ))}
+            </ul>
+          )
+        }
+        <p class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold">
+          <a href="/about" class="text-brand-blue hover:underline">About the forum and its organiser →</a>
+          <a href="/guiding-principles" class="text-brand-blue hover:underline">Guiding principles →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing call to action -->
+  <section class="container-site py-20 sm:py-24" aria-labelledby="cta-title" data-reveal>
+    <div class="bg-brand-gradient-deep relative isolate overflow-hidden rounded-[1.75rem] px-6 py-12 text-white sm:px-12 sm:py-16 lg:px-16">
+      <svg aria-hidden="true" class="pointer-events-none absolute -bottom-1/2 -left-24 -z-10 w-[520px] opacity-[0.14]" viewBox="0 0 800 800" fill="none" stroke="white">
+        {[390, 310, 230, 150].map((r) => <circle cx="400" cy="400" r={r} stroke-width="1.5" />)}
+      </svg>
+      <div class="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+        <div class="max-w-2xl">
+          <h2 id="cta-title" class="text-title font-semibold text-balance">Join us on {date}</h2>
+          <p class="mt-4 text-lg text-white">{current.venue}{current.format === 'hybrid' ? ', and online.' : '.'}</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <RegisterButton tone="dark" />
+          <a href={updatesHref(site, current.year)} class="inline-flex h-12 items-center rounded-full border border-white/50 px-6 font-semibold transition hover:bg-white/10">
+            Get updates
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+

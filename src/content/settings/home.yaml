@@ -1,0 +1,23 @@
+tagline: A multi-stakeholder forum for safe, trustworthy and sustainable AI.
+intro: >-
+  The AI Governance Forum is a multi-stakeholder platform open to all interested parties dedicated
+  to a safe, trustworthy, and sustainable AI. Stakeholders can be from the academic community, the
+  public or private sector, and civil society.
+
+
+  The AI Governance Forum is organized by the AI Transparency Institute – a non-profit organization
+  based in Switzerland. It aims at identifying and addressing new opportunities and risks with
+  regards to AI applications, and foster collaboration and facilitate dialogue on comparative AI
+  law.
+themes:
+  - title: AI safety
+    text: >-
+      Frontier models, guardrails and red teaming: how rules and standards can keep pace with
+      emerging risks.
+  - title: Trust and transparency
+    text: 'Explainability, accountability and fairness: the conditions under which people can rely on AI.'
+  - title: Sustainability
+    text: >-
+      AI in the interest of future generations, from its climate footprint to responsible business
+      models.
+showStats: true

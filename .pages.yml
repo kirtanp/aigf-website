@@ -1,0 +1,518 @@
+# Pages CMS configuration (https://pagescms.org). Mirrors the schemas in
+# src/content.config.ts: if you add or rename a field there, change it here too.
+# Editors' guide: EDITING.md.
+
+settings:
+  content:
+    # Keep fields that are not listed below (e.g. edition logos) when a file is saved.
+    merge: true
+
+media:
+  - name: speakers
+    label: Speaker photos
+    input: src/assets/speakers
+    # Relative to src/content/speakers/, which is what Astro expects.
+    output: ../../assets/speakers
+    categories: [image]
+    rename: safe
+  - name: events
+    label: Event photos
+    input: src/assets/editions
+    output: ../../assets/editions
+    categories: [image]
+    rename: safe
+  - name: files
+    label: Slides and documents
+    input: public/files
+    output: /files
+    categories: [document]
+    rename: safe
+
+content:
+  - name: settings
+    label: Site settings
+    type: group
+    items:
+      - name: current
+        label: Current edition
+        description: Date, venue, registration and livestream for this year's forum. Shown on the home page, the Programme page and the header.
+        type: file
+        path: src/content/settings/current.yaml
+        fields:
+          - name: registrationOpen
+            label: Registration open
+            type: boolean
+            description: Turn on once the registration link below is filled in. While off, visitors see "Registration link coming soon".
+          - name: registerUrl
+            label: Registration link
+            type: string
+            description: The full ticket page URL, starting with https://
+            pattern:
+              regex: '^(https?://\S+)?$'
+              message: Use the full URL, starting with https://
+          - name: livestreamUrl
+            label: Livestream link
+            type: string
+            description: Optional. Adds a "Watch online" button. Full URL, starting with https://
+            pattern:
+              regex: '^(https?://\S+)?$'
+              message: Use the full URL, starting with https://
+          - name: programmePublished
+            label: Programme published
+            type: boolean
+            description: Turn on to show the schedule (Editions → this year → Schedule) on the Programme page. Speakers show as soon as they are added.
+          - name: date
+            label: Date
+            type: date
+            required: true
+          - name: startTime
+            label: Start time
+            type: string
+            description: 24-hour time, e.g. 14:00. Leave empty if not decided yet.
+            pattern:
+              regex: '^(\d{2}:\d{2})?$'
+              message: Use 24-hour time, e.g. 14:00
+          - name: endTime
+            label: End time
+            type: string
+            description: 24-hour time, e.g. 18:00
+            pattern:
+              regex: '^(\d{2}:\d{2})?$'
+              message: Use 24-hour time, e.g. 18:00
+          - name: timezone
+            label: Time zone
+            type: string
+            description: Usually CET (CEST in summer).
+          - name: format
+            label: Format
+            type: select
+            required: true
+            options:
+              values:
+                - { value: hybrid, label: Hybrid (in person and online) }
+                - { value: in-person, label: In person only }
+                - { value: online, label: Online only }
+          - name: venue
+            label: Venue
+            type: string
+            required: true
+            description: e.g. Swiss Institute of Comparative Law, University of Lausanne
+          - name: city
+            label: City
+            type: string
+            required: true
+          - name: country
+            label: Country
+            type: string
+            required: true
+          - name: theme
+            label: Theme
+            type: string
+            description: Optional. Replaces the home page tagline when filled in.
+          - name: title
+            label: Title
+            type: string
+            required: true
+            description: e.g. AI Governance Forum 2026
+          - name: year
+            label: Year
+            type: number
+            required: true
+            description: Change only when you start the next edition (see EDITING.md, "A new year").
+          - name: number
+            label: Edition number
+            type: number
+            required: true
+            description: 8 for the 8th edition.
+
+      - name: home
+        label: Home page
+        type: file
+        path: src/content/settings/home.yaml
+        fields:
+          - name: tagline
+            label: Tagline
+            type: string
+            description: One line under the title at the top of the home page.
+          - name: intro
+            label: Introduction
+            type: text
+            required: true
+            description: Shown under "The forum". Leave an empty line between paragraphs.
+          - name: themes
+            label: Themes
+            type: object
+            description: This year's themes, shown as tiles. Two to four work best.
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{title}'
+            fields:
+              - name: title
+                label: Title
+                type: string
+                required: true
+              - name: text
+                label: One-line description
+                type: text
+                required: true
+          - name: showStats
+            label: Show statistics
+            type: boolean
+            description: The small line with the number of past editions and speakers.
+
+      - name: site
+        label: Organiser and contact
+        type: file
+        path: src/content/settings/site.yaml
+        fields:
+          - name: contactEmail
+            label: Contact email
+            type: string
+            required: true
+            pattern:
+              regex: '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+              message: Enter an email address
+          - name: newsletterFormUrl
+            label: Newsletter signup link
+            type: string
+            description: Optional. The signup page of the newsletter (e.g. Brevo). While empty, "Get updates" opens an email to the contact address.
+            pattern:
+              regex: '^(https?://\S+)?$'
+              message: Use the full URL, starting with https://
+          - name: organiserName
+            label: Organiser name
+            type: string
+            required: true
+          - name: organiserUrl
+            label: Organiser website
+            type: string
+            required: true
+            pattern:
+              regex: '^https?://\S+$'
+              message: Use the full URL, starting with https://
+          - name: organiserSummary
+            label: Organiser summary
+            type: text
+            description: Two or three sentences for the "Organiser" section of the home page.
+          - name: organiserMissions
+            label: Missions
+            type: string
+            list: true
+            description: Short labels, e.g. Education.
+          - name: social
+            label: Social media profiles
+            type: object
+            description: Shown in the footer. Add only real, active profiles.
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{label}'
+            fields:
+              - name: label
+                label: Name
+                type: string
+                required: true
+                description: e.g. LinkedIn
+              - name: url
+                label: Link
+                type: string
+                required: true
+                pattern:
+                  regex: '^https?://\S+$'
+                  message: Use the full URL, starting with https://
+
+  - name: speakers
+    label: Speakers
+    description: One entry per person, across all years. To list someone in a year's programme, add them under Editions → that year → Speakers.
+    type: collection
+    path: src/content/speakers
+    format: yaml-frontmatter
+    filename: '{primary}.md'
+    operations:
+      rename: false
+      delete: false
+    view:
+      primary: name
+      fields: [name, organisation, draft]
+      search: [name, organisation]
+      default:
+        sort: name
+        order: asc
+    fields:
+      - name: name
+        label: Full name
+        type: string
+        required: true
+        description: As the person writes it, e.g. Marion Ho-Dac
+      - name: title
+        label: Job title
+        type: string
+        description: Current role only, e.g. Professor of Law
+      - name: organisation
+        label: Organisation
+        type: string
+        description: Shown on every speaker card, e.g. University of Zurich
+      - name: photo
+        label: Photo
+        type: image
+        description: Any portrait photo; the site crops and resizes it. Leave empty to show initials.
+        options:
+          media: speakers
+      - name: links
+        label: Links
+        type: object
+        description: Optional, e.g. LinkedIn or a personal page.
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+          - name: label
+            label: Label
+            type: string
+            required: true
+          - name: url
+            label: Link
+            type: string
+            required: true
+            pattern:
+              regex: '^(https?://|/)\S*$'
+              message: Use the full URL, starting with https://
+      - name: draft
+        label: Hidden (draft)
+        type: boolean
+        description: Turn on to prepare a speaker without showing them on the site yet.
+      - name: body
+        label: Biography
+        type: rich-text
+
+  - name: editions
+    label: Editions
+    description: One entry per year. The current year's speakers and schedule appear on the Programme page; earlier years are archive pages.
+    type: collection
+    path: src/content/editions
+    format: yaml
+    filename: '{fields.year}.yaml'
+    operations:
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, theme, date]
+      default:
+        sort: year
+        order: desc
+    fields:
+      - name: year
+        label: Year
+        type: number
+        required: true
+      - name: number
+        label: Edition number
+        type: number
+        required: true
+      - name: title
+        label: Title
+        type: string
+        required: true
+        description: e.g. AI Governance Forum 2026
+      - name: theme
+        label: Theme
+        type: string
+        description: The headline of the edition page.
+      - name: subtitle
+        label: Subtitle
+        type: string
+      - name: date
+        label: Date
+        type: date
+        required: true
+      - name: endDate
+        label: End date
+        type: date
+        description: Only for editions over several days.
+      - name: startTime
+        label: Start time
+        type: string
+        pattern:
+          regex: '^(\d{2}:\d{2})?$'
+          message: Use 24-hour time, e.g. 14:00
+      - name: endTime
+        label: End time
+        type: string
+        pattern:
+          regex: '^(\d{2}:\d{2})?$'
+          message: Use 24-hour time, e.g. 17:00
+      - name: timezone
+        label: Time zone
+        type: string
+      - name: format
+        label: Format
+        type: select
+        required: true
+        options:
+          values:
+            - { value: hybrid, label: Hybrid (in person and online) }
+            - { value: in-person, label: In person only }
+            - { value: online, label: Online only }
+      - name: city
+        label: City
+        type: string
+      - name: venue
+        label: Venue
+        type: string
+      - name: summary
+        label: Summary
+        type: text
+        description: Two or three sentences about the edition, for the archive.
+      - name: supportedBy
+        label: Supported by
+        type: string
+        list: true
+      - name: speakers
+        label: Speakers
+        type: object
+        description: Everyone who spoke that year, in the order they should appear. Role and organisation are as they were that year.
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{speaker}'
+        fields:
+          - name: speaker
+            label: Speaker
+            type: reference
+            required: true
+            description: Add the person under Speakers first if they are new.
+            options:
+              collection: speakers
+              value: '{name}'
+              label: '{fields.name}'
+              search: 'fields.name,fields.organisation'
+          - name: roleAtTheTime
+            label: Role that year
+            type: string
+            description: Leave empty to use their current job title.
+          - name: organisationAtTheTime
+            label: Organisation that year
+            type: string
+            description: Leave empty to use their current organisation.
+          - name: talkTitle
+            label: Talk title
+            type: string
+          - name: sessionRole
+            label: Session role
+            type: string
+            description: e.g. Keynote, Moderator, Panelist
+      - name: schedule
+        label: Schedule
+        type: object
+        description: One row per slot, in order. A row without a title is a talk inside the session above it.
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{time} {title}'
+        fields:
+          - name: day
+            label: Day
+            type: string
+            description: Only for editions over several days, e.g. 8 June 2020.
+          - name: time
+            label: Time
+            type: string
+            required: true
+            description: e.g. 14:00–14:30
+          - name: title
+            label: Title
+            type: string
+            description: Session or talk title. Leave empty for a talk inside the session above.
+          - name: speakers
+            label: Speakers
+            type: reference
+            options:
+              collection: speakers
+              multiple: true
+              value: '{name}'
+              label: '{fields.name}'
+              search: 'fields.name,fields.organisation'
+          - name: description
+            label: Description
+            type: text
+          - name: links
+            label: Slides and links
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: '{label}'
+            fields:
+              - name: label
+                label: Label
+                type: string
+                required: true
+                description: e.g. Slides
+              - name: file
+                label: File
+                type: file
+                description: Upload slides (PDF), or fill in a link below instead.
+                options:
+                  media: files
+              - name: url
+                label: Link
+                type: string
+                description: A full URL starting with https://, if there is no file.
+                pattern:
+                  regex: '^((https?://|/)\S*)?$'
+                  message: Use the full URL, starting with https://
+      - name: photos
+        label: Event photos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{alt}'
+        fields:
+          - name: image
+            label: Photo
+            type: image
+            required: true
+            options:
+              media: events
+          - name: alt
+            label: Description
+            type: string
+            description: What the photo shows, for people using screen readers, e.g. "Panel discussion on the EU AI Act".
+
+  - name: pages
+    label: Pages
+    description: About, Guiding principles, Contact and the archived journal call.
+    type: collection
+    path: src/content/pages
+    format: yaml-frontmatter
+    filename: '{primary}.md'
+    operations:
+      create: false
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, draft]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Short description
+        type: string
+        description: One sentence under the title, also used by search engines.
+      - name: archived
+        label: Archived
+        type: boolean
+        description: Shows a note that the page is kept for reference only.
+      - name: draft
+        label: Hidden (draft)
+        type: boolean
+      - name: body
+        label: Text
+        type: rich-text

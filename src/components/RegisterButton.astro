@@ -1,0 +1,31 @@
+---
+// Live button when an editor has pasted a registration URL in Site settings;
+// otherwise a muted, non-clickable placeholder.
+import { getCurrent } from '../lib/data';
+
+interface Props {
+  size?: 'sm' | 'lg';
+  // 'dark' sits on the gradient (hero, closing band); 'light' on white.
+  tone?: 'light' | 'dark';
+}
+const { size = 'lg', tone = 'light' } = Astro.props;
+const current = await getCurrent();
+const live = current.registrationOpen && current.registerUrl;
+const pad = size === 'lg' ? 'h-12 px-6 text-base' : 'h-9 px-4 text-sm';
+const liveTone = tone === 'dark' ? 'bg-white text-brand-blue hover:bg-white/90' : 'bg-brand-gradient-deep text-white hover:opacity-90';
+const soonTone = tone === 'dark' ? 'border-white/35 bg-white/10 text-white' : 'border-line bg-wash text-muted';
+---
+
+{
+  live ? (
+    <a href={current.registerUrl} class:list={['inline-flex items-center gap-2 rounded-full font-semibold whitespace-nowrap shadow-sm transition', pad, liveTone]}>
+      Register
+      <svg aria-hidden="true" viewBox="0 0 16 16" class="size-4" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
+    </a>
+  ) : (
+    <span class:list={['inline-flex cursor-default items-center gap-2 rounded-full border font-medium whitespace-nowrap', pad, soonTone]} aria-disabled="true">
+      <span class="size-1.5 rounded-full bg-current opacity-60" aria-hidden="true" />
+      Registration link coming soon
+    </span>
+  )
+}
