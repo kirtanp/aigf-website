@@ -17,7 +17,7 @@ const { name, photo } = speaker.data;
 ---
 
 <a href={`/speakers/${speaker.id}`} class="group block rounded-lg focus-visible:outline-offset-4">
-  <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-wash ring-1 ring-black/5 ring-inset">
+  <div class="relative aspect-[4/5] overflow-hidden rounded-lg bg-wash ring-1 ring-white/5 ring-inset">
     {
       photo ? (
         <Image
@@ -29,7 +29,7 @@ const { name, photo } = speaker.data;
           class="h-full w-full object-cover object-[50%_25%] contrast-[1.04] grayscale transition duration-700 ease-out group-hover:scale-[1.03] group-hover:grayscale-0 group-focus-visible:grayscale-0"
         />
       ) : (
-        <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#ecebff_0%,#fbe9f2_100%)]" aria-hidden="true">
+        <div class="flex h-full w-full items-center justify-center bg-initials" aria-hidden="true">
           <span class="text-brand-gradient text-5xl font-semibold tracking-tight">{initials(name)}</span>
         </div>
       )

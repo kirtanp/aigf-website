@@ -17,7 +17,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 <header class="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md supports-[backdrop-filter]:bg-paper/75">
   <div class="container-site flex h-16 items-center justify-between gap-6">
     <a href="/" class="shrink-0" aria-label="AI Governance Forum, home">
-      <Image src={wordmark} alt="AI GF’26" height={44} class="h-[22px] w-auto" />
+      <Image src={wordmark} alt="AI GF’26" height={44} class="wordmark-white h-[22px] w-auto" />
     </a>
     <nav aria-label="Main" class="hidden lg:block">
       <ul class="flex items-center gap-1 text-sm font-medium">
@@ -44,7 +44,7 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
           <path class="group-open:hidden" d="M2 5h12M2 11h12" /><path class="hidden group-open:inline" d="M4 4l8 8M12 4l-8 8" />
         </svg>
       </summary>
-      <nav aria-label="Main" class="absolute inset-x-0 top-16 border-b border-line bg-paper shadow-[0_24px_48px_-24px_rgb(0_0_0/0.18)]">
+      <nav aria-label="Main" class="absolute inset-x-0 top-16 border-b border-line bg-paper shadow-[0_24px_48px_-24px_rgb(0_0_0/0.6)]">
         <ul class="container-site divide-y divide-line py-2 text-lg font-medium">
           {
             nav.map((item) => (

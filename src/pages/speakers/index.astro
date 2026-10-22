@@ -8,7 +8,7 @@ const appearances = await getAppearances();
 const years = (await getEditions()).filter((e) => e.data.speakers.length > 0).map((e) => e.data.year);
 const firstYear = years.at(-1);
 const chip =
-  'inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-full border border-line bg-paper px-4 text-sm font-medium tabular-nums transition hover:border-ink/30 aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white';
+  'inline-flex h-9 shrink-0 items-center whitespace-nowrap rounded-full border border-line bg-paper px-4 text-sm font-medium tabular-nums transition hover:border-ink/30 aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-paper';
 ---
 
 <Base title="Speakers" description={`Speakers at the AI Governance Forum since ${firstYear}.`}>

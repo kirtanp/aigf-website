@@ -38,12 +38,12 @@ const peers = latestEdition
     </p>
     <div class="grid gap-10 md:grid-cols-12 md:gap-12 lg:gap-16">
       <div class="fade-in md:col-span-5 lg:col-span-4">
-        <div class="aspect-[4/5] max-w-[15rem] overflow-hidden rounded-2xl bg-wash ring-1 ring-black/5 sm:max-w-xs md:max-w-none">
+        <div class="aspect-[4/5] max-w-[15rem] overflow-hidden rounded-2xl bg-wash ring-1 ring-white/5 sm:max-w-xs md:max-w-none">
           {
             photo ? (
               <Image src={photo} alt={`Portrait of ${name}`} widths={[384, 576, 768]} sizes="(min-width: 1024px) 384px, (min-width: 768px) 40vw, 384px" loading="eager" class="h-full w-full object-cover object-[50%_25%]" />
             ) : (
-              <div class="flex h-full w-full items-center justify-center bg-[linear-gradient(135deg,#ecebff_0%,#fbe9f2_100%)]" aria-hidden="true">
+              <div class="flex h-full w-full items-center justify-center bg-initials" aria-hidden="true">
                 <span class="text-brand-gradient text-7xl font-semibold tracking-tight">{initials(name)}</span>
               </div>
             )

@@ -12,7 +12,7 @@ const { size = 'lg', tone = 'light' } = Astro.props;
 const current = await getCurrent();
 const live = current.registrationOpen && current.registerUrl;
 const pad = size === 'lg' ? 'h-12 px-6 text-base' : 'h-9 px-4 text-sm';
-const liveTone = tone === 'dark' ? 'bg-white text-brand-blue hover:bg-white/90' : 'bg-brand-gradient-deep text-white hover:opacity-90';
+const liveTone = tone === 'dark' ? 'bg-white text-brand-indigo hover:bg-white/90' : 'bg-brand-gradient-deep text-white hover:opacity-90';
 const soonTone = tone === 'dark' ? 'border-white/35 bg-white/10 text-white' : 'border-line bg-wash text-muted';
 ---
 
